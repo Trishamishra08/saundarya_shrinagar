@@ -6,11 +6,16 @@ const OffersBanner = () => {
     <section className="py-20">
       <div className="container mx-auto px-4 md:px-8">
         <div className="relative rounded-3xl overflow-hidden h-[300px] md:h-[350px]">
-          <img 
-            src={promoImg} 
-            alt="Festival Beauty Sale"
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="https://v1.pinimg.com/videos/iht/720p/7e/ea/de/7eeadea15e5a731b14692d3986188a44.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-black/10 md:bg-transparent md:bg-gradient-to-r md:from-brand-pink/60 md:to-transparent flex items-center">
             <div className="p-8 md:p-20 text-brand-dark max-w-lg">
               <span className="bg-brand-gold text-white px-4 py-1 rounded-full text-[10px] font-bold mb-4 inline-block tracking-widest uppercase">FESTIVAL SPECIAL</span>

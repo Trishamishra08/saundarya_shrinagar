@@ -58,21 +58,21 @@ const HeroCarousel = () => {
                 className="w-full h-full object-cover object-center transform scale-105"
               />
               
-              <div className="absolute inset-0 z-20 flex items-center justify-center md:justify-start">
-                <div className="container mx-auto px-4 md:px-20">
+              <div className="absolute inset-0 z-20 flex items-end justify-start pb-10 md:pb-14">
+                <div className="px-6 md:px-20">
                   <motion.div 
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="max-w-xl text-center md:text-left text-brand-dark"
+                    className="max-w-lg text-left text-white"
                   >
-                    <h2 className="text-xl md:text-3xl lg:text-4xl font-serif font-bold mb-3 drop-shadow-sm uppercase tracking-wide leading-tight">
+                    <h2 className="text-sm md:text-lg lg:text-xl font-serif font-bold mb-2 drop-shadow-sm uppercase tracking-wide leading-tight">
                       {slide.title}
                     </h2>
-                    <p className="text-sm md:text-base mb-6 opacity-80 drop-shadow-sm font-medium max-w-md">
+                    <p className="text-[10px] md:text-xs mb-5 opacity-80 drop-shadow-sm font-medium max-w-xs">
                       {slide.subtitle}
                     </p>
-                    <button className="bg-brand-gold text-white px-8 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-brand-dark transition-all duration-300 shadow-lg">
+                    <button className="bg-brand-gold text-white px-6 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:bg-brand-dark transition-all duration-300 shadow-md">
                       {slide.buttonText}
                     </button>
                   </motion.div>
