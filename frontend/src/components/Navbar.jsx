@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { FiHeart, FiShoppingBag, FiUser, FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/images/logo.png';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo_pink.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +27,7 @@ const Navbar = () => {
           <div className="flex items-center h-16 md:h-[72px] gap-4">
 
             {/* Logo — floats gently, background blends with navbar */}
-            <div className="flex items-center gap-2 shrink-0 cursor-pointer">
+            <Link to="/" className="flex items-center gap-2 shrink-0 cursor-pointer">
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -36,8 +37,7 @@ const Navbar = () => {
                 <img
                   src={logo}
                   alt="Soundarya Shrinagar Logo"
-                  className="h-10 w-auto md:h-14 logo-blend"
-                  style={{ mixBlendMode: 'multiply' }}
+                  className="h-10 w-auto md:h-14"
                 />
               </motion.div>
 
@@ -56,15 +56,15 @@ const Navbar = () => {
                   Shrinagar
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Nav Links — center, Playfair Display, reduced spacing */}
             <div className="hidden lg:flex flex-1 justify-center">
               <div className="flex items-center gap-4 xl:gap-6">
                 {menuItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.link}
+                    to={item.link}
                     className="relative group whitespace-nowrap"
                     style={{
                       fontFamily: "'Playfair Display', serif",
@@ -77,7 +77,7 @@ const Navbar = () => {
                   >
                     {item.name}
                     <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-white/60 transition-all duration-300 group-hover:w-full" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
               </button>
 
               <div className="mt-4 mb-8">
-                <img src={logo} alt="Logo" className="h-14 w-auto mb-4 logo-blend" style={{ mixBlendMode: 'multiply', backgroundColor: '#E8B4B8' }} />
+                <img src={logo} alt="Logo" className="h-14 w-auto mb-4" />
                 <h2
                   className="text-xl text-white uppercase tracking-widest leading-none"
                   style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 900 }}
@@ -139,15 +139,15 @@ const Navbar = () => {
 
               <div className="flex flex-col gap-5">
                 {menuItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.link}
+                    to={item.link}
                     className="text-white border-b border-white/10 pb-3 uppercase tracking-[0.2em]"
                     style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700 }}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

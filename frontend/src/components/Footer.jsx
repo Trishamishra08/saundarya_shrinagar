@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiFacebook, FiInstagram, FiTwitter, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
-import logo from '../assets/images/facebook_logo.jpg';
+import logo from '../assets/images/logo_pink.png';
 import footerBg from '../assets/images/footer_bg.jpg';
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div>
             <div className="flex items-center space-x-3 mb-2">
-              <img src={logo} alt="Logo" className="h-16 w-auto rounded-lg shadow-sm" />
+              <img src={logo} alt="Logo" className="h-12 w-auto" />
             </div>
             <p className="text-gray-500 mb-3 text-xs leading-relaxed max-w-xs">
               Experience the pure essence of nature with Soundarya Shrinagar. Our 100% organic and natural beauty products are crafted to enhance your natural glow.

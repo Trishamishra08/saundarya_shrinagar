@@ -1,37 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroCarousel from './components/HeroCarousel';
-import Categories from './components/Categories';
-import FeaturedProducts from './components/FeaturedProducts';
-import TrendingBanner from './components/TrendingBanner';
-import OffersBanner from './components/OffersBanner';
-import BestSellers from './components/BestSellers';
-import WhyChoose from './components/WhyChoose';
-import BlogSection from './components/BlogSection';
-import Testimonials from './components/Testimonials';
-import InstagramGallery from './components/InstagramGallery';
-import Newsletter from './components/Newsletter';
+import Home from './components/Home';
+import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-light">
-      <Navbar />
-      <main>
-        <HeroCarousel />
-        <Categories />
-        <TrendingBanner />
-        <FeaturedProducts />
-        <OffersBanner />
-        <BestSellers />
-        <WhyChoose />
-        <BlogSection />
-        <Testimonials />
-        <InstagramGallery />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-brand-light">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutSection />} />
+            {/* You can add more routes here as you build more pages */}
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
