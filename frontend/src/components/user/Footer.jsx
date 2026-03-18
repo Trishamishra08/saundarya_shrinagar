@@ -20,12 +20,11 @@ const Footer = () => {
         
         {/* Centered Brand Branding */}
         <div className="flex flex-col items-center mb-4 md:mb-6">
-          <div className="h-10 md:h-12 w-auto mb-2 md:mb-3 flex items-center justify-center bg-[#FFE8EA] rounded-full">
+          <div className="h-12 md:h-16 w-auto mb-2 md:mb-3 flex items-center justify-center">
             <img
               src="/logo.png"
               alt="Soundarya Shrinagar Logo"
-              className="h-full w-auto logo-blend"
-              style={{ mixBlendMode: 'multiply' }}
+              className="h-full w-auto mix-blend-multiply opacity-90"
             />
           </div>
           <div className="flex flex-col leading-none items-center">
