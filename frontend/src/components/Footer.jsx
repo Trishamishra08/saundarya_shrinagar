@@ -36,15 +36,15 @@ const Footer = () => {
             <h3 className="text-xs font-bold mb-3 uppercase tracking-widest text-brand-gold">Contact Us</h3>
             <ul className="space-y-2 text-gray-500 text-[10px]">
               <li className="flex items-center md:justify-end space-x-2">
-                <span>Dehradun, Uttarakhand, India</span>
+                <span className="text-right">Lajpat Nagar Near Radha Swami Bhawan Fatehabad-125050 Haryana</span>
                 <FiMapPin className="text-brand-pink shrink-0" size={10} />
               </li>
               <li className="flex items-center md:justify-end space-x-2">
-                <span>+91 86790 76776</span>
+                <span>+91 9896472169</span>
                 <FiPhone className="text-brand-pink shrink-0" size={10} />
               </li>
               <li className="flex items-center md:justify-end space-x-2">
-                <span>hello@soundaryashrinagar.com</span>
+                <span>customercare@saundaryashringar.com</span>
                 <FiMail className="text-brand-pink shrink-0" size={10} />
               </li>
             </ul>

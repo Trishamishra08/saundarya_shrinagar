@@ -92,12 +92,12 @@ const Contact = () => {
               <ContactInfo 
                 icon={<FiMail />} 
                 label="Email us at" 
-                value="hello@soundaryashrinagar.com" 
+                value="customercare@saundaryashringar.com" 
               />
               <ContactInfo 
                 icon={<FiPhone />} 
                 label="Talk to us" 
-                value="+91 86790 76776" 
+                value="+91 9896472169" 
               />
               <ContactInfo 
                 icon={<FiInstagram />} 
@@ -107,7 +107,7 @@ const Contact = () => {
               <ContactInfo 
                 icon={<FiMapPin />} 
                 label="Visit our boutique" 
-                value="Dehradun, Uttarakhand, India" 
+                value="Lajpat Nagar Near Radha Swami Bhawan Fatehabad-125050 Haryana" 
               />
             </div>
 
