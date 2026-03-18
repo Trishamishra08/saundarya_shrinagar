@@ -33,9 +33,7 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 shrink-0 cursor-pointer">
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              <div
                 className="relative"
                 style={{ backgroundColor: '#E8B4B8' }}
               >
@@ -45,7 +43,7 @@ const Navbar = () => {
                   className="h-10 w-auto md:h-14 logo-blend"
                   style={{ mixBlendMode: 'multiply' }}
                 />
-              </motion.div>
+              </div>
 
               <div className="flex flex-col leading-none">
                 <span
