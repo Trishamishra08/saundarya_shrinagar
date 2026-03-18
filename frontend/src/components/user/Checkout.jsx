@@ -312,7 +312,7 @@ const Checkout = () => {
                <button 
                  onClick={handleProceed}
                  disabled={cart.length === 0}
-                 className="w-full bg-[#5C2E3E] text-white py-5 font-bold uppercase tracking-[0.4em] text-[10px] shadow-2xl hover:bg-brand-pink transition-all active:scale-95 disabled:bg-gray-100 disabled:shadow-none"
+                 className="w-full bg-[#5C2E3E] text-white py-5 font-bold uppercase tracking-[0.4em] text-[10px] shadow-2xl hover:bg-brand-pink transition-all active:scale-95 disabled:bg-gray-100 disabled:text-gray-400 disabled:shadow-none"
                >
                  {step === 3 ? 'Complete Order' : 'Continue Journey'}
                </button>
