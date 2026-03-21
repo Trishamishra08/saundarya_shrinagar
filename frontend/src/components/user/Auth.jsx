@@ -6,6 +6,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import logoPink from '../../assets/images/logo_pink.png';
 import catSkincare from '../../assets/images/cat_skincare_new.png';
+import catMakeup from '../../assets/images/cat_makeup_new.png';
 
 const Auth = () => {
   const { setIsAuthenticated, setUser } = useShop();
@@ -90,8 +91,15 @@ const Auth = () => {
 
   if (!isAdminPath) {
     return (
-      <div className="fixed inset-0 z-[999] w-full h-[100dvh] bg-[#FAF7F8] font-['Inter',_sans-serif] flex flex-col items-center justify-center p-4 md:p-8 select-none overflow-y-auto">
+      <div className="fixed inset-0 z-[999] w-full h-[100dvh] bg-[#E8EAEF] font-['Inter',_sans-serif] flex items-center justify-center p-4 md:p-8 select-none">
         
+        {/* Sky/Cloud Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+           <div className="absolute top-10 left-10 w-96 h-96 bg-white/60 rounded-full blur-[100px]" />
+           <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/60 rounded-full blur-[100px]" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#E8EAEF]/50" />
+        </div>
+
         <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20">
            <Link to="/" className="flex items-center gap-2 font-black text-[9px] md:text-[10px] uppercase tracking-widest text-[#5C2E3E] hover:text-[#5C2E3E]/60 transition-colors">
               &larr; Back to Store
@@ -99,36 +107,40 @@ const Auth = () => {
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col bg-white shadow-2xl shadow-[#E8B4B8]/30 w-full max-w-[340px] md:max-w-[380px] relative z-10 rounded-[1.5rem] overflow-hidden border border-[#E8B4B8]/30"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] w-full max-w-[850px] min-h-[500px] relative z-10 rounded-[1.5rem] md:rounded-[2rem] p-2 md:p-2.5 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden"
         >
-          {/* Card Banner Image */}
-          <div className="h-32 md:h-40 w-full relative">
-            <img src={catSkincare} alt="Welcome" className="w-full h-full object-cover opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 w-full flex justify-center translate-y-1/2">
-              <div className="bg-white p-2.5 rounded-full shadow-lg border border-[#E8B4B8]/20 flex items-center justify-center">
-                <img src={logoPink} alt="Soundarya Shrinagar" className="h-8 md:h-10 object-contain drop-shadow-sm" />
-              </div>
+          {/* Left panel Image */}
+          <div className="w-full md:w-[48%] h-64 md:h-auto rounded-[1.2rem] md:rounded-[1.7rem] overflow-hidden relative shrink-0 border border-black/5">
+            <img src={catMakeup} alt="Makeup Inspiration" className="w-full h-full object-cover object-top" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8">
+               <h2 className="text-white text-3xl md:text-5xl font-extrabold leading-[1em] tracking-tight">
+                 RADIATE.<br />EMPOWER.<br />GLOW.
+               </h2>
             </div>
           </div>
 
-          <div className="px-6 pb-8 pt-10 md:px-10 md:pb-10 md:pt-12 flex flex-col items-center">
-             <h1 className="text-xl md:text-2xl font-serif font-black text-[#5C2E3E] tracking-widest mb-1.5 leading-none" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
-               SIGN IN
-             </h1>
-             <p className="text-[7.5px] text-gray-400 font-bold uppercase tracking-[0.25em] mb-7 text-center">
-               Verified Client Portal
-             </p>
+          {/* Right panel Form */}
+          <div className="w-full md:w-[52%] px-6 md:px-12 lg:px-16 py-8 md:py-10 flex flex-col justify-center relative">
+            
+            <div className="text-center mb-8">
+               <img src={logoPink} alt="Logo" className="h-8 md:h-10 mx-auto mb-4 grayscale" style={{ filter: "brightness(0) sepia(1)" }} />
+               <h1 className="text-[22px] md:text-[26px] font-black text-black tracking-tight mb-1">
+                 WELCOME BACK
+               </h1>
+               <p className="text-[10px] md:text-xs text-gray-500 font-medium tracking-wide">
+                 Enter your mobile number to access your account
+               </p>
+            </div>
 
-            <form onSubmit={handleSubmit} className="w-full space-y-5 cursor-text">
-              <div className="space-y-2">
-                <div className="relative group">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                     <span className="text-[#5C2E3E] font-bold text-[10px] md:text-[11px]">+91</span>
-                     <div className="w-[1px] h-4 bg-[#E8B4B8]/50" />
-                  </div>
+            <form onSubmit={handleSubmit} className="w-full space-y-4 md:space-y-5">
+              <div className="space-y-1.5">
+                <label className="text-[10px] md:text-[11px] text-gray-800 font-bold ml-1">Mobile Number</label>
+                <div className="relative">
+                  <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
                   <input
                     type="tel"
                     name="phone"
@@ -136,30 +148,44 @@ const Auth = () => {
                     onChange={handleInputChange}
                     required
                     maxLength={10}
-                    placeholder="Enter 10-digit mobile"
-                    className="w-full bg-[#FAF7F8]/50 border border-[#E8B4B8]/40 pl-[3.5rem] pr-4 py-3.5 md:py-4 text-[11px] md:text-xs font-bold focus:bg-white focus:border-[#E8B4B8] focus:ring-4 focus:ring-[#E8B4B8]/10 outline-none transition-all text-[#5C2E3E] placeholder:text-gray-300 tracking-[0.15em] rounded-xl hover:border-[#E8B4B8]/70"
+                    placeholder="Enter your mobile number"
+                    className="w-full bg-[#f4f6f9] border-none pl-10 pr-4 py-3.5 md:py-4 rounded-xl text-xs md:text-[13px] font-semibold focus:bg-[#ecf0f5] focus:outline-none focus:ring-1 focus:ring-black/10 transition-all text-black placeholder:text-gray-400"
                   />
                 </div>
+              </div>
+
+              <div className="flex items-center justify-between px-1">
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <input type="checkbox" className="w-3.5 h-3.5 md:w-4 md:h-4 rounded border-gray-300 text-black focus:ring-black cursor-pointer" />
+                  <span className="text-[9px] md:text-[10px] font-medium text-gray-500 group-hover:text-black transition-colors">Remember me</span>
+                </label>
+                <button type="button" className="text-[9px] md:text-[10px] font-bold text-black hover:underline transition-all">Forgot Password?</button>
               </div>
               
               <button 
                 type="submit"
                 disabled={!form.phone || form.phone.length < 10}
-                className="w-full bg-[#5C2E3E] text-white py-3.5 md:py-4 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-center disabled:opacity-50 hover:bg-[#E8B4B8] hover:text-[#5C2E3E] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-black text-white py-3.5 md:py-4 rounded-xl text-[11px] md:text-xs font-bold transition-all disabled:opacity-50 hover:bg-gray-800 hover:-translate-y-0.5 active:scale-95 shadow-lg shadow-black/20"
               >
-                Secure Access
+                Sign In
+              </button>
+
+              <button 
+                type="button"
+                className="w-full bg-white border border-gray-200 text-black py-3 md:py-3.5 rounded-xl text-[11px] md:text-xs font-bold hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
+              >
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" className="h-4 w-4" />
+                Sign in with Google
               </button>
             </form>
             
-            <p className="text-[5.5px] text-center mt-7 text-gray-400 font-bold uppercase tracking-[0.25em] opacity-60">
-              By continuing you accept Soundarya's Terms & Conditions
-            </p>
+            <div className="mt-8 text-center text-[10px] md:text-[11px]">
+              <span className="text-gray-500 font-medium">Don't have an account? </span>
+              <button type="button" className="text-black font-extrabold hover:underline">Sign up</button>
+            </div>
+
           </div>
         </motion.div>
-        
-        {/* Background Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8B4B8]/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E8B4B8]/20 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
       </div>
     );
   }
