@@ -175,16 +175,9 @@ const Auth = () => {
                 Sign In
               </button>
 
-              <button 
-                type="button"
-                className="w-full bg-white border border-gray-100 text-black py-2.5 md:py-3 rounded-xl text-[9px] md:text-[10px] font-bold hover:bg-gray-50 transition-all flex items-center justify-center gap-2 shadow-sm"
-              >
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="h-3.5 w-3.5" />
-                Google
-              </button>
             </form>
             
-            <div className="mt-5 md:mt-8 text-center text-[9px] md:text-[10px]">
+            <div className="mt-8 md:mt-10 text-center text-[9px] md:text-[10px]">
               <span className="text-gray-400 font-medium tracking-tight">New here? </span>
               <button type="button" className="text-black font-extrabold hover:underline">Sign up</button>
             </div>
