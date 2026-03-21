@@ -31,23 +31,21 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 shrink-0 cursor-pointer group">
-              <div className="relative bg-transparent transform group-hover:scale-105 transition-transform">
-                <img
-                  src="/logo.png"
-                  alt="Soundarya Shrinagar Logo"
-                  className="h-10 w-auto md:h-16"
-                />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Soundarya Shrinagar Logo"
+                className="h-10 w-auto md:h-14 logo-blend transition-transform group-hover:scale-105"
+              />
 
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-sm md:text-xl font-black tracking-[0.1em] text-white uppercase leading-none drop-shadow-sm"
+                  className="text-sm md:text-lg font-black tracking-[0.12em] text-white uppercase leading-none"
                   style={{ fontFamily: "'Cinzel Decorative', 'Cinzel', serif" }}
                 >
                   Soundarya
                 </span>
                 <span
-                  className="text-[7px] md:text-[10px] tracking-[0.4em] text-white/90 mt-0.5 uppercase font-bold"
+                  className="text-[7px] md:text-[9px] tracking-[0.45em] text-white/80 mt-1 uppercase font-bold"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Shrinagar
@@ -144,21 +142,19 @@ const Navbar = () => {
               </button>
 
               <div className="mt-4 mb-8">
-              <div className="mt-4 mb-8">
-                <img src="/logo.png" alt="Logo" className="h-16 w-auto mb-4" />
+                <img src="/logo.png" alt="Logo" className="h-14 w-auto mb-4 logo-blend" />
                 <h2
-                  className="text-2xl text-white uppercase tracking-widest leading-none drop-shadow-md"
+                  className="text-2xl text-white uppercase tracking-widest leading-none"
                   style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 900 }}
                 >
                   Soundarya
                 </h2>
                 <span
-                  className="text-[10px] text-white/90 tracking-[0.45em] uppercase mt-1.5 block font-bold"
+                  className="text-[9px] text-white/80 tracking-[0.45em] uppercase mt-1.5 block font-bold"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Shrinagar
                 </span>
-              </div>
               </div>
 
               <div className="flex flex-col gap-4">

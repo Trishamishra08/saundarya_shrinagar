@@ -14,6 +14,7 @@ const OffersBanner = () => {
             loop 
             muted 
             playsInline
+            preload="none"
             className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
           >
             <source src="/offers_video.mp4" type="video/mp4" />
@@ -21,7 +22,7 @@ const OffersBanner = () => {
           </video>
           
           {/* Enhanced Overlay for premium feel */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent md:bg-gradient-to-r md:from-black/60 md:to-transparent flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/10 to-transparent md:bg-gradient-to-r md:from-black/20 md:to-transparent flex items-center">
             <div className="p-8 md:p-20 text-white max-w-xl text-center md:text-left mx-auto md:mx-0">
               <span className="bg-brand-gold text-white px-5 py-1.5 rounded-none text-[10px] sm:text-xs font-bold mb-4 sm:mb-6 inline-block tracking-[0.2em] uppercase shadow-lg shadow-brand-gold/20">
                 Exclusive Offer

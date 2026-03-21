@@ -88,24 +88,24 @@ const Contact = () => {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {/* Contact Details Grid */}
-            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6">
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 md:gap-x-12">
               <ContactInfo 
-                icon={<FiMail />} 
+                icon={<FiMail size={16} />} 
                 label="Email us at" 
                 value="customercare@saundaryashringar.com" 
               />
               <ContactInfo 
-                icon={<FiPhone />} 
+                icon={<FiPhone size={16} />} 
                 label="Talk to us" 
                 value="+91 9896472169" 
               />
               <ContactInfo 
-                icon={<FiInstagram />} 
+                icon={<FiInstagram size={16} />} 
                 label="Follow our journey" 
                 value="@soundarya_shrinagar" 
               />
               <ContactInfo 
-                icon={<FiMapPin />} 
+                icon={<FiMapPin size={16} />} 
                 label="Visit our boutique" 
                 value="Lajpat Nagar Near Radha Swami Bhawan Fatehabad-125050 Haryana" 
               />
@@ -165,15 +165,15 @@ const Contact = () => {
 
 const ContactInfo = ({ icon, label, value }) => (
   <motion.div 
-    whileHover={{ x: 10 }}
-    className="flex items-center gap-5 group cursor-pointer"
+    whileHover={{ x: 5 }}
+    className="flex items-center gap-3 md:gap-4 group cursor-pointer min-w-0"
   >
-    <div className="w-14 h-14 rounded-full bg-brand-pink/20 flex items-center justify-center text-brand-dark text-xl group-hover:bg-brand-dark group-hover:text-white transition-all duration-300 shadow-sm">
+    <div className="w-10 h-10 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-dark group-hover:bg-brand-dark group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
       {icon}
     </div>
-    <div>
-      <p className="text-[10px] uppercase font-bold text-gray-400 tracking-[0.2em] mb-1">{label}</p>
-      <p className="text-brand-dark font-inter font-bold text-sm md:text-base">{value}</p>
+    <div className="min-w-0 flex-1">
+      <p className="text-[7px] md:text-[8px] uppercase font-bold text-gray-400 tracking-[0.2em] mb-0.5">{label}</p>
+      <p className="text-brand-dark font-bold text-[10px] md:text-[13px] break-all md:break-words leading-tight">{value}</p>
     </div>
   </motion.div>
 );

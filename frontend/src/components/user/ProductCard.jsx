@@ -21,7 +21,7 @@ const MiniTimer = () => {
   }, []);
 
   return (
-    <div className="absolute top-2 left-2 z-40 bg-brand-pink/90 backdrop-blur-sm text-white px-2 py-1 rounded-sm shadow-xl flex items-center gap-1.5 border border-white/20">
+    <div className="absolute bottom-2 left-2 z-40 bg-brand-pink/90 backdrop-blur-sm text-white px-2 py-1 rounded-sm shadow-xl flex items-center gap-1.5 border border-white/20">
       <FiClock className="w-2.5 h-2.5 text-brand-gold animate-pulse" />
       <div className="flex gap-1">
         {[timeLeft.h, timeLeft.m, timeLeft.s].map((v, i) => (
@@ -88,16 +88,18 @@ const ProductCard = ({ product }) => {
         {/* Minimalist Labels */}
         <AnimatePresence>
           <div className="absolute top-2 left-2 z-20 flex flex-col gap-1.5 items-start">
-            {product.discount && !product.hasTimer && (
+            {(product.discount || product.flashSale) && (
               <>
                 <div className="flex items-center">
-                  <span className="bg-[#5C2E3E] text-white text-[7px] font-black px-2 py-0.5 rounded-sm shadow-sm uppercase tracking-widest border border-white/10">
-                    Limited Offer
+                  <span className="bg-[#5C2E3E] text-white text-[7px] font-black px-2 py-1 rounded-sm shadow-sm uppercase tracking-widest border border-white/10">
+                    Running Sale
                   </span>
                 </div>
-                <span className="bg-brand-pink text-white text-[8px] font-black px-2 py-0.5 rounded-sm shadow-md flex items-center gap-1">
-                  -{product.discount}
-                </span>
+                {product.discount && (
+                  <span className="bg-brand-pink text-white text-[8px] font-black px-2 py-1 rounded-sm shadow-md flex items-center gap-1">
+                    {product.discount} OFF
+                  </span>
+                )}
               </>
             )}
           </div>

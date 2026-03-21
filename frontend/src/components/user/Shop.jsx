@@ -83,6 +83,9 @@ const Shop = () => {
 
   // Filter Logic
   const filteredProducts = initialProducts.filter(p => {
+    const showOffersOnly = searchParams.get('offers') === 'true';
+    if (showOffersOnly && !p.discount && !p.flashSale) return false;
+
     const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
     const matchesSubCategory = !activeSubCategory || p.subCategory === activeSubCategory;
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -96,7 +99,7 @@ const Shop = () => {
     if (sortBy === 'Price: Low to High') return a.price - b.price;
     if (sortBy === 'Price: High to Low') return b.price - a.price;
     if (sortBy === 'Top Rated') return b.rating - a.rating;
-    return b.id - a.id; // New Arrivals
+    return b.id - a.id; 
   });
 
   return (

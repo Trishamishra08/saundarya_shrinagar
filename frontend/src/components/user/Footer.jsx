@@ -73,10 +73,9 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-4 border-t border-brand-pink/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col items-center md:items-start leading-none group scale-90">
-            <img src="/logo.png" alt="Logo" className="h-10 w-auto mb-2 opacity-80 group-hover:opacity-100 transition-opacity" />
-            <span className="text-sm font-black tracking-widest text-[#2D1810] uppercase" style={{ fontFamily: "'Cinzel Decorative', serif" }}>Saundarya</span>
-            <span className="text-[8px] tracking-[0.4em] text-[#2D1810]/60 uppercase ml-0.5" style={{ fontFamily: "'Cinzel', serif" }}>Shrinagar</span>
+          <div className="flex flex-col items-center md:items-start leading-none group transition-transform hover:scale-105">
+            <span className="text-sm md:text-base font-black tracking-[0.2em] text-[#5C2E3E] uppercase" style={{ fontFamily: "'Cinzel Decorative', serif" }}>Saundarya</span>
+            <span className="text-[7px] md:text-[8px] tracking-[0.5em] text-[#5C2E3E]/60 uppercase mt-1 font-bold" style={{ fontFamily: "'Cinzel', serif" }}>Shrinagar</span>
           </div>
 
           <div className="flex gap-4 text-[8px] font-black uppercase tracking-widest text-[#2D1810]/40">

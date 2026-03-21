@@ -38,6 +38,7 @@ import AdminOrders from './components/admin/AdminOrders';
 import AdminFinance from './components/admin/AdminFinance';
 import AdminBanners from './components/admin/AdminBanners';
 import AdminSettings from './components/admin/AdminSettings';
+import AdminLayout from './components/admin/AdminLayout';
 
 const UserRoutes = () => (
   <>
@@ -72,14 +73,16 @@ const UserRoutes = () => (
 
 const AdminRoutes = () => (
   <Routes>
-    <Route path="/" element={<AdminDashboard />} />
-    <Route path="/products" element={<AdminProducts />} />
-    <Route path="/categories" element={<AdminCategories />} />
-    <Route path="/users" element={<AdminUsers />} />
-    <Route path="/orders" element={<AdminOrders />} />
-    <Route path="/finance" element={<AdminFinance />} />
-    <Route path="/banners" element={<AdminBanners />} />
-    <Route path="/settings" element={<AdminSettings />} />
+    <Route element={<AdminLayout />}>
+      <Route path="/" element={<AdminDashboard />} />
+      <Route path="/products" element={<AdminProducts />} />
+      <Route path="/categories" element={<AdminCategories />} />
+      <Route path="/users" element={<AdminUsers />} />
+      <Route path="/orders" element={<AdminOrders />} />
+      <Route path="/finance" element={<AdminFinance />} />
+      <Route path="/banners" element={<AdminBanners />} />
+      <Route path="/settings" element={<AdminSettings />} />
+    </Route>
   </Routes>
 );
 
@@ -96,6 +99,8 @@ function App() {
       touchMultiplier: 2,
       infinite: false,
     });
+
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);

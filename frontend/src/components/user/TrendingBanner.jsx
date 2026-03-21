@@ -93,7 +93,7 @@ const TrendingBanner = () => {
                     backgroundPosition: 'center'
                   }}
                 >
-                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute inset-0 bg-black/20"></div>
                   
                   <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-8 md:px-20 text-white">

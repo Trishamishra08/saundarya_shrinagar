@@ -37,20 +37,31 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-brand-light;
+  @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-brand-gold rounded-full;
+  @apply bg-brand-pink/20 rounded-none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-opacity-80;
+  @apply bg-brand-pink/40;
 }
 
-/* Blend logo image to match pink navbar background */
+/* Performance optimization: lazy render below-the-fold sections */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}
+
+/* Ensure above-the-fold sections are immediate */
+section:first-of-type {
+  content-visibility: visible;
+}
+
+/* Blend logo image to match pink navbar background and create maroon effect */
 .logo-blend {
-  mix-blend-mode: multiply;
+  mix-blend-mode: multiply !important;
   background-color: transparent;
 }
 
