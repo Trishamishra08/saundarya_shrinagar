@@ -164,7 +164,9 @@ const Auth = () => {
                   <FiCheckCircle className="w-4 h-4 md:w-5 md:h-5" />
                </div>
             </motion.div>
-            <h3 className="hidden md:block text-[#5C2E3E] font-black uppercase tracking-[0.3em] text-[10px] opacity-40">Verified Access Only</h3>
+            <h3 className="hidden md:block text-[#5C2E3E] font-black uppercase tracking-[0.3em] text-[10px] opacity-40">
+               {isLogin ? 'Verified Access Only' : 'Welcome to the Sanctuary'}
+            </h3>
           </div>
 
           <div className="absolute bottom-4 left-8">
@@ -255,11 +257,10 @@ const Auth = () => {
                            onChange={(e) => handleOtpChange(index, e.target.value)}
                            onKeyDown={(e) => handleKeyDown(index, e)}
                            className="w-full h-11 md:h-14 bg-white/5 border border-white/10 rounded-xl text-center text-lg md:text-xl font-bold focus:bg-white/10 focus:border-white/30 transition-all text-white outline-none"
-                           autoFocus={index === 0}
                          />
                        ))}
                      </div>
-                     <button type="button" onClick={() => setStep(1)} className="text-[8px] text-white/40 font-bold uppercase tracking-widest hover:text-white transition-colors ml-1 mt-2 underline underline-offset-4">Change Number</button>
+                     <button type="button" onClick={() => { setStep(1); setOtp(['','','','','','']); }} className="text-[8px] text-white/40 font-bold uppercase tracking-widest hover:text-white transition-colors ml-1 mt-2 underline underline-offset-4">Change Number</button>
                    </div>
                  )}
 

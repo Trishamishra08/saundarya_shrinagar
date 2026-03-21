@@ -27,10 +27,16 @@ export const ShopProvider = ({ children }) => {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('soundarya_cart');
-    const savedWishlist = localStorage.getItem('soundarya_wishlist');
-    if (savedCart) setCart(JSON.parse(savedCart));
-    if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
+    try {
+      const savedCart = localStorage.getItem('soundarya_cart');
+      const savedWishlist = localStorage.getItem('soundarya_wishlist');
+      if (savedCart && savedCart !== "undefined") setCart(JSON.parse(savedCart));
+      if (savedWishlist && savedWishlist !== "undefined") setWishlist(JSON.parse(savedWishlist));
+    } catch (e) {
+      console.error("Local storage corruption detected. Resetting to defaults.", e);
+      setCart([]);
+      setWishlist([]);
+    }
   }, []);
 
   // Save to localStorage on change
