@@ -10,16 +10,19 @@ import catWellness from '../../assets/images/cat_wellness_new.png';
 import catBeautyKits from '../../assets/images/cat_beautykits_new.png';
 import catFragrance from '../../assets/images/cat_fragrance_new.png';
 import catEssentialOils from '../../assets/images/cat_essentialoils_new.png';
+import catSoaps from '../../assets/images/cat_soaps.png';
+import catJewellery from '../../assets/images/cat_jewellery.png';
+import catInnerwear from '../../assets/images/cat_innerwear.png';
 
 const categories = [
-  { id: 'skincare', name: 'Skincare', image: catSkincare },
-  { id: 'haircare', name: 'Haircare', image: catHaircare },
-  { id: 'makeup', name: 'Makeup', image: catMakeup },
-  { id: 'bath & body', name: 'Bath & Body', image: catBathBody },
-  { id: 'organic wellness', name: 'Organic Wellness', image: catWellness },
-  { id: 'beauty kits', name: 'Beauty Kits', image: catBeautyKits },
-  { id: 'fragrances', name: 'Fragrances', image: catFragrance },
-  { id: 'essential oils', name: 'Essential Oils', image: catEssentialOils },
+  { id: 'Skincare', name: 'Skincare', image: catSkincare },
+  { id: 'Soaps', name: 'Soaps', image: catSoaps },
+  { id: 'Makeup', name: 'Makeup', image: catMakeup },
+  { id: 'Jewellery', name: 'Jewellery', image: catJewellery },
+  { id: 'Innerwear', name: 'Innerwear', image: catInnerwear },
+  { id: 'Haircare', name: 'Haircare', image: catHaircare },
+  { id: 'Wellness', name: 'Wellness', image: catWellness },
+  { id: 'Combos', name: 'Combos', image: catBeautyKits },
 ];
 
 const Categories = () => {
@@ -55,6 +58,7 @@ const Categories = () => {
                   <img 
                     src={cat.image} 
                     alt={cat.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>

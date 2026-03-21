@@ -12,15 +12,13 @@ const Navbar = () => {
   const menuItems = [
     { name: 'Home', link: '/' },
     { name: 'Shop', link: '/shop' },
-    { name: 'Skincare', link: '/shop?category=skincare' },
-    { name: 'Haircare', link: '/shop?category=haircare' },
-    { name: 'Makeup', link: '/shop?category=makeup' },
-    { name: 'Wellness', link: '/shop?category=organic wellness' },
-    { name: 'Offers', link: '/offers' },
+    { name: 'Skincare', link: '/shop?category=Skincare' },
+    { name: 'Makeup', link: '/shop?category=Makeup' },
+    { name: 'Soaps', link: '/shop?category=Soaps' },
+    { name: 'Offers', link: '/shop?offers=true' },
     { name: 'Blog', link: '/blog' },
     { name: 'About', link: '/about' },
     { name: 'Contact', link: '/contact' },
-    { name: 'Track', link: '/track-order' },
   ];
 
   const isActive = (path) => (location.pathname + location.search) === path;
@@ -32,38 +30,33 @@ const Navbar = () => {
           <div className="flex items-center h-16 md:h-[72px] gap-4">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 shrink-0 cursor-pointer">
-              <div
-                className="relative"
-                style={{ backgroundColor: '#E8B4B8' }}
-              >
+            <Link to="/" className="flex items-center gap-3 shrink-0 cursor-pointer group">
+              <div className="relative bg-transparent transform group-hover:scale-105 transition-transform">
                 <img
                   src="/logo.png"
                   alt="Soundarya Shrinagar Logo"
-                  className="h-10 w-auto md:h-14 logo-blend"
-                  style={{ mixBlendMode: 'multiply' }}
+                  className="h-10 w-auto md:h-16"
                 />
               </div>
 
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-xs md:text-base font-black tracking-[0.08em] text-white uppercase leading-none"
+                  className="text-sm md:text-xl font-black tracking-[0.1em] text-white uppercase leading-none drop-shadow-sm"
                   style={{ fontFamily: "'Cinzel Decorative', 'Cinzel', serif" }}
                 >
                   Soundarya
                 </span>
                 <span
-                  className="text-[6px] md:text-[9px] tracking-[0.35em] text-white/80 mt-0.5 uppercase"
-                  style={{ fontFamily: "'Cinzel', serif", fontWeight: 600 }}
+                  className="text-[7px] md:text-[10px] tracking-[0.4em] text-white/90 mt-0.5 uppercase font-bold"
+                  style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Shrinagar
                 </span>
               </div>
             </Link>
 
-            {/* Nav Links */}
             <div className="hidden lg:flex flex-1 justify-center">
-              <div className="flex items-center gap-4 xl:gap-6">
+              <div className="flex items-center gap-4 xl:gap-8 px-4">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
@@ -72,22 +65,22 @@ const Navbar = () => {
                     style={{
                       fontFamily: "'Playfair Display', serif",
                       fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '0.12em',
+                      fontWeight: 900,
+                      letterSpacing: '0.15em',
                       textTransform: 'uppercase',
-                      color: isActive(item.link) ? '#5C2E3E' : 'white',
+                      color: isActive(item.link) ? '#5C2E3E' : 'black',
                       transition: 'color 0.3s ease'
                     }}
                   >
                     {item.name}
-                    <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-white/60 transition-all duration-300 ${isActive(item.link) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                    <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-black/60 transition-all duration-300 ${isActive(item.link) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                   </Link>
                 ))}
               </div>
             </div>
 
             {/* Icons */}
-            <div className="flex items-center gap-4 md:gap-5 text-white shrink-0 ml-auto lg:ml-0">
+            <div className="flex items-center gap-4 md:gap-5 text-black shrink-0 ml-auto lg:ml-0">
               <Link 
                 to="/wishlist" 
                 className={`relative cursor-pointer hover:scale-110 transition-transform ${isActive('/wishlist') ? 'text-brand-dark' : ''}`}
@@ -144,26 +137,28 @@ const Navbar = () => {
           >
             <div className="w-4/5 bg-brand-pink h-full shadow-2xl p-8 relative overflow-y-auto">
               <button
-                className="absolute top-6 right-6 text-2xl text-white outline-none"
+                className="absolute top-6 right-6 text-2xl text-black outline-none"
                 onClick={() => setIsOpen(false)}
               >
                 <FiX />
               </button>
 
               <div className="mt-4 mb-8">
-                <img src="/logo.png" alt="Logo" className="h-14 w-auto mb-4 logo-blend" style={{ mixBlendMode: 'multiply', backgroundColor: '#E8B4B8' }} />
+              <div className="mt-4 mb-8">
+                <img src="/logo.png" alt="Logo" className="h-16 w-auto mb-4" />
                 <h2
-                  className="text-xl text-white uppercase tracking-widest leading-none"
+                  className="text-2xl text-white uppercase tracking-widest leading-none drop-shadow-md"
                   style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 900 }}
                 >
                   Soundarya
                 </h2>
                 <span
-                  className="text-[9px] text-white/70 tracking-[0.4em] uppercase mt-1 block"
+                  className="text-[10px] text-white/90 tracking-[0.45em] uppercase mt-1.5 block font-bold"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   Shrinagar
                 </span>
+              </div>
               </div>
 
               <div className="flex flex-col gap-4">
@@ -171,8 +166,8 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.link}
-                    className={`pb-2 uppercase tracking-[0.15em] border-b transition-colors ${isActive(item.link) ? 'text-[#5C2E3E] border-[#5C2E3E]/30' : 'text-white border-white/10'}`}
-                    style={{ fontFamily: "'Playfair Display', serif", fontSize: '12px', fontWeight: 700 }}
+                    className={`pb-2 uppercase tracking-[0.15em] border-b transition-colors ${isActive(item.link) ? 'text-[#5C2E3E] border-[#5C2E3E]/30' : 'text-black border-black/10'}`}
+                    style={{ fontFamily: "'Playfair Display', serif", fontSize: '12px', fontWeight: 900 }}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}

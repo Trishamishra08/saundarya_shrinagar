@@ -18,40 +18,42 @@ import imgHighlighter from '../../assets/products/liquid_highlighter.png';
 const bestSellers = [
   {
     id: 10,
-    name: 'Lakme UV-Protect Face Powder',
-    price: 1899,
+    name: 'Face Scrub (Mini)',
+    price: 149,
     rating: 5,
     reviews: 912,
     image: imgLakmePowder,
   },
   {
     id: 11,
-    name: 'Plumping Lip Gloss',
-    price: 850,
+    name: 'Lustrous Lip Gloss',
+    price: 299,
     rating: 5,
     reviews: 610,
     image: imgLipGloss,
+    hasTimer: true,
   },
   {
     id: 12,
-    name: 'Volumizing Mascara',
-    price: 1150,
+    name: 'Volumizing Eye Mascara',
+    price: 349,
     rating: 4,
     reviews: 489,
     image: imgMascara,
   },
   {
     id: 13,
-    name: 'Lakme 2-in-1 Lipstick + Liner',
-    price: 999,
+    name: 'Herbal Lipstick Stick',
+    price: 199,
     rating: 4,
     reviews: 745,
     image: imgLipstick,
+    hasTimer: true,
   },
   {
     id: 14,
-    name: 'Dewy Liquid Highlighter',
-    price: 1450,
+    name: 'Organic Kajal Pencil',
+    price: 99,
     rating: 5,
     reviews: 520,
     image: imgHighlighter,
@@ -62,21 +64,15 @@ const BestSellers = () => {
   return (
     <section className="py-8 md:py-10 bg-brand-pink/20">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col items-center mb-6 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-4"
-          >
-            <h2 className="text-lg md:text-xl font-serif font-bold mb-0.5 text-brand-dark uppercase tracking-wide">Our Best Sellers</h2>
-            <p className="text-gray-500 font-medium text-[10px] md:text-xs">Most loved products by our community</p>
-          </motion.div>
-          <div className="flex space-x-2">
-            {/* Custom navigation buttons will be handled by Swiper default for now */}
-          </div>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8"
+        >
+          <h2 className="text-xl md:text-2xl font-serif font-bold mb-1 text-brand-dark uppercase tracking-wide">Our Best Sellers</h2>
+          <div className="w-16 h-1 bg-brand-gold mx-auto"></div>
+        </motion.div>
 
         <Swiper
           modules={[Navigation, Pagination]}

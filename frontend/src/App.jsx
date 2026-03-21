@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ShopProvider } from './context/ShopContext';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 
 // User Module Imports
 import Navbar from './components/user/Navbar';
@@ -17,10 +19,25 @@ import Auth from './components/user/Auth';
 import Profile from './components/user/Profile';
 import BlogSection from './components/user/BlogSection';
 import Offers from './components/user/Offers';
+import ProductDetail from './components/user/ProductDetail';
+import Bag from './components/user/Bag';
 import ScrollToTop from './components/user/ScrollToTop';
+
+// Policy Imports
+import PrivacyPolicy from './components/user/policies/PrivacyPolicy';
+import ReturnPolicy from './components/user/policies/ReturnPolicy';
+import TermsAndConditions from './components/user/policies/TermsAndConditions';
+import CancelPolicy from './components/user/policies/CancelPolicy';
 
 // Admin Module Imports
 import AdminDashboard from './components/admin/AdminDashboard';
+import AdminProducts from './components/admin/AdminProducts';
+import AdminCategories from './components/admin/AdminCategories';
+import AdminUsers from './components/admin/AdminUsers';
+import AdminOrders from './components/admin/AdminOrders';
+import AdminFinance from './components/admin/AdminFinance';
+import AdminBanners from './components/admin/AdminBanners';
+import AdminSettings from './components/admin/AdminSettings';
 
 const UserRoutes = () => (
   <>
@@ -40,6 +57,12 @@ const UserRoutes = () => (
           <Route path="/offers" element={<Offers />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/bag" element={<Bag />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
+          <Route path="/terms-conditions" element={<TermsAndConditions />} />
+          <Route path="/cancellation-policy" element={<CancelPolicy />} />
         </Routes>
       </main>
       <Footer />
@@ -50,11 +73,42 @@ const UserRoutes = () => (
 const AdminRoutes = () => (
   <Routes>
     <Route path="/" element={<AdminDashboard />} />
-    {/* Add more admin routes here later like /admin/products, /admin/orders */}
+    <Route path="/products" element={<AdminProducts />} />
+    <Route path="/categories" element={<AdminCategories />} />
+    <Route path="/users" element={<AdminUsers />} />
+    <Route path="/orders" element={<AdminOrders />} />
+    <Route path="/finance" element={<AdminFinance />} />
+    <Route path="/banners" element={<AdminBanners />} />
+    <Route path="/settings" element={<AdminSettings />} />
   </Routes>
 );
 
 function App() {
+  React.useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <ShopProvider>
       <Router>

@@ -21,8 +21,8 @@ const Checkout = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [step, isSuccess]);
 
-  const shipping = cartTotal > 1500 ? 0 : 150;
-  const total = cartTotal + shipping;
+  const shipping = 0; // Free delivery charges
+  const total = cartTotal;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -88,6 +88,19 @@ const Checkout = () => {
                 <p className="text-[7px] font-black text-gray-400 uppercase tracking-widest mb-1">Destination</p>
                 <p className="text-[10px] font-bold text-[#5C2E3E] truncate">{formData.name}</p>
                 <p className="text-[8px] text-[#5C2E3E]/60 font-serif italic line-clamp-1">{formData.address}</p>
+             </div>
+
+             {/* Delivery Map Feature */}
+             <div className="relative h-24 bg-gray-100 overflow-hidden group">
+                <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=20.5937,78.9629&zoom=4&size=400x400&sensor=false')] bg-cover opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="p-2 bg-white/90 backdrop-blur-sm border border-brand-pink/20 text-[6px] font-black uppercase tracking-widest text-[#5C2E3E]">Courier Dispatch Map</div>
+                   <motion.div 
+                     animate={{ scale: [1, 1.2, 1] }} 
+                     transition={{ duration: 2, repeat: Infinity }}
+                     className="absolute w-4 h-4 bg-brand-pink rounded-full opacity-20 shadow-2xl"
+                   />
+                </div>
              </div>
              
              <Link to={`/track-order?id=${orderId}`} className="w-full inline-block px-8 py-3 bg-brand-gold text-white text-[9px] font-black uppercase tracking-[0.2em] shadow-lg hover:bg-[#5C2E3E] transition-all mb-2">
@@ -295,13 +308,11 @@ const Checkout = () => {
                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#5C2E3E]/40">Safe Passage</span>
                    <span className="text-sm font-black text-brand-gold">{shipping === 0 ? 'FREE' : `₹${shipping}`}</span>
                  </div>
-                 {shipping > 0 && (
                    <div className="bg-brand-gold/5 p-3 text-center border-l-2 border-brand-gold">
                       <p className="text-[8px] font-bold text-brand-gold uppercase tracking-[0.2em] leading-relaxed">
-                        Add treasures worth ₹{1500 - cartTotal} more for <span className="underline">Free Shipping</span>
+                        🎉 <span className="underline">Free Shipping Activated</span> for All Divine Purchases
                       </p>
                    </div>
-                 )}
                </div>
 
                <div className="pt-4 border-t border-gray-100 flex justify-between items-center px-1">

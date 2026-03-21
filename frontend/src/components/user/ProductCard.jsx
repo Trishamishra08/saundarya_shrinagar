@@ -1,9 +1,38 @@
 import React, { useState } from 'react';
-import { FiHeart, FiShoppingBag, FiStar, FiCheck, FiArrowRight } from 'react-icons/fi';
+import { FiHeart, FiShoppingBag, FiStar, FiCheck, FiArrowRight, FiClock } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useShop } from '../../context/ShopContext';
-
 import { useNavigate } from 'react-router-dom';
+
+const MiniTimer = () => {
+  const [timeLeft, setTimeLeft] = React.useState({ h: 2, m: 34, s: 50 });
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        let { h, m, s } = prev;
+        if (s > 0) s--;
+        else if (m > 0) { s = 59; m--; }
+        else if (h > 0) { s = 59; m = 59; h--; }
+        return { h, m, s };
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="absolute top-2 left-2 z-40 bg-brand-pink/90 backdrop-blur-sm text-white px-2 py-1 rounded-sm shadow-xl flex items-center gap-1.5 border border-white/20">
+      <FiClock className="w-2.5 h-2.5 text-brand-gold animate-pulse" />
+      <div className="flex gap-1">
+        {[timeLeft.h, timeLeft.m, timeLeft.s].map((v, i) => (
+          <span key={i} className="text-[8px] font-black tracking-tighter tabular-nums">
+            {String(v).padStart(2, '0')}{i < 2 ? ':' : ''}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const ProductCard = ({ product }) => {
   const { addToCart, toggleWishlist, isInWishlist, isAuthenticated } = useShop();
@@ -36,46 +65,70 @@ const ProductCard = ({ product }) => {
     toggleWishlist(product);
   };
 
+  const handleCardClick = () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    } else {
+      navigate(`/product/${product.id}`);
+    }
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white border-b border-r border-gray-100 flex flex-col h-full group relative"
+      onClick={handleCardClick}
+      className="bg-[#FFF8F9] border border-brand-pink/5 rounded-2xl flex flex-col h-full group relative cursor-pointer hover:shadow-2xl hover:shadow-brand-pink/10 transition-all duration-500 overflow-hidden"
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-[#F9F6F4] p-3 md:p-4">
+      <div className="relative aspect-square overflow-hidden p-3 bg-white/20">
+        {/* Timer Overlay if applicable */}
+        {product.hasTimer && <MiniTimer />}
+
         {/* Minimalist Labels */}
-        <div className="absolute top-0 left-0 z-20 p-2 pointer-events-none flex flex-col gap-1">
-          {product.label && (
-            <span className="bg-[#5C2E3E] text-white text-[7px] font-black px-2 py-0.5 uppercase tracking-widest">
-              {product.label}
-            </span>
-          )}
-          {product.discount && (
-            <span className="bg-brand-gold text-white text-[7px] font-black px-2 py-0.5 uppercase tracking-widest">
-              -{product.discount}
-            </span>
-          )}
-        </div>
+        <AnimatePresence>
+          <div className="absolute top-2 left-2 z-20 flex flex-col gap-1.5 items-start">
+            {product.discount && !product.hasTimer && (
+              <>
+                <div className="flex items-center">
+                  <span className="bg-[#5C2E3E] text-white text-[7px] font-black px-2 py-0.5 rounded-sm shadow-sm uppercase tracking-widest border border-white/10">
+                    Limited Offer
+                  </span>
+                </div>
+                <span className="bg-brand-pink text-white text-[8px] font-black px-2 py-0.5 rounded-sm shadow-md flex items-center gap-1">
+                  -{product.discount}
+                </span>
+              </>
+            )}
+          </div>
+        </AnimatePresence>
 
         {/* Wishlist Icon */}
         <button 
           type="button"
           onClick={handleWishlist}
-          className={`absolute top-4 right-4 z-30 transition-all p-1.5 rounded-full bg-white/70 backdrop-blur-sm active:scale-90 ${
-            liked ? 'text-brand-pink scale-110 opacity-100' : 'text-gray-400 hover:text-brand-pink'
+          className={`absolute top-2 right-2 z-30 transition-all p-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-md active:scale-90 ${
+            liked ? 'text-brand-pink scale-110' : 'text-gray-300 hover:text-brand-pink'
           }`}
         >
           <FiHeart className={`w-3 h-3 ${liked ? 'fill-current' : ''}`} />
         </button>
         
-        {/* The Image strictly shaped like the 2nd image floating gallery */}
-        <div className="w-full h-full rounded-2xl md:rounded-[2rem] border-[4px] md:border-[6px] border-white overflow-hidden shadow-sm relative z-10">
+        {/* Image - Filling the card proper */}
+        <div className="w-full h-full overflow-hidden relative z-10 rounded-2xl bg-white/50 shadow-inner group">
           <img 
             src={product.image} 
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            loading="lazy"
+            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
           />
+          {product.discount && (
+             <div className="absolute bottom-2 left-2 right-2 bg-white/70 backdrop-blur-sm py-1 px-2 rounded-lg border border-brand-pink/5 z-20 hidden md:block">
+               <p className="text-[7px] font-black text-brand-dark uppercase tracking-widest text-center">
+                 ⚡ Limited Stock Available
+               </p>
+             </div>
+          )}
         </div>
         
         {/* Ultra-Compact Quick Add Overlay */}
@@ -83,7 +136,7 @@ const ProductCard = ({ product }) => {
           <button 
             type="button"
             onClick={handleAdd}
-            className={`w-full py-3 rounded-t-xl flex items-center justify-center space-x-2 transition-all text-[8px] font-black uppercase tracking-[0.2em] shadow-2xl active:scale-95 ${
+            className={`w-full py-3 rounded-none flex items-center justify-center space-x-2 transition-all text-[8px] font-black uppercase tracking-[0.2em] shadow-2xl active:scale-95 mb-2 ${
               isAdded ? 'bg-brand-gold text-white' : 'bg-[#5C2E3E] text-white'
             }`}
           >
@@ -102,25 +155,44 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
       
-      <div className="p-3 md:p-4 text-center flex flex-col flex-1 bg-white relative">
-        <h3 className="font-serif font-black text-[9px] md:text-[10px] text-[#5C2E3E] mb-1 line-clamp-1 truncate uppercase tracking-widest">
+      <div className="p-3 text-left flex flex-col flex-1 bg-transparent relative">
+        <h3 className="font-sans font-bold text-[10px] md:text-[11px] text-gray-800 mb-1.5 line-clamp-2 leading-tight min-h-[2.4em]">
           {product.name}
         </h3>
         
-        <div className="flex justify-center items-center space-x-0.5 mb-2">
-          {[...Array(5)].map((_, i) => (
-            <FiStar 
-              key={i} 
-              className={`w-2 h-2 ${i < (product.rating || 5) ? "fill-brand-gold text-brand-gold" : "text-gray-100"}`} 
-            />
-          ))}
+        <div className="flex items-center gap-1.5 mb-2">
+          <div className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <FiStar 
+                key={i} 
+                className={`w-2.5 h-2.5 ${i < (product.rating || 4) ? "fill-brand-gold text-brand-gold" : "text-gray-100"}`} 
+              />
+            ))}
+          </div>
+          <span className="text-brand-pink font-bold text-[8px] md:text-[9px] tracking-tight">{product.reviews || '24k'} ratings</span>
         </div>
 
-        <div className="flex items-center justify-center space-x-2 mt-auto">
-          <span className="text-brand-gold font-black text-[11px] md:text-sm tracking-tight leading-none">₹{product.price}</span>
-          {product.oldPrice && (
-            <span className="text-gray-200 text-[9px] line-through leading-none font-medium">₹{product.oldPrice}</span>
-          )}
+        <div className="space-y-1 mt-auto">
+          <div className="flex items-center gap-1.5">
+            <span className="text-brand-dark font-black text-xs md:text-sm">₹{product.price}</span>
+            {product.oldPrice && (
+              <span className="text-gray-400 text-[9px] line-through font-medium">₹{product.oldPrice}</span>
+            )}
+            {product.discount && (
+              <span className="text-green-600 font-bold text-[8px] uppercase tracking-tighter">Save {product.discount}</span>
+            )}
+          </div>
+          <div className="flex items-center gap-1.5">
+             <div className="flex items-center gap-1 bg-green-50 px-1.5 py-0.5 rounded border border-green-100">
+               <FiCheck className="w-2.5 h-2.5 text-green-600" />
+               <span className="text-green-600 font-bold text-[7px] uppercase tracking-tighter">Fast Delivery</span>
+             </div>
+             {product.discount && (
+                <span className="text-[#5C2E3E] font-black text-[7px] uppercase tracking-tighter border-l border-gray-200 pl-1.5">
+                  Ends Soon
+                </span>
+             )}
+          </div>
         </div>
       </div>
 

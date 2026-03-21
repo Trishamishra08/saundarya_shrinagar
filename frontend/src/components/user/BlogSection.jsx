@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
+import { useSearchParams } from 'react-router-dom';
 import blogFloating1 from '../../assets/images/blog_floating_1.png';
 import blogFloating2 from '../../assets/images/blog_floating_2.png';
 import blogFloating3 from '../../assets/images/blog_floating_3.png';
@@ -70,11 +71,48 @@ const blogs = [
     date: 'FEB 12',
     readTime: '3M'
   },
+  {
+    id: 7,
+    category: 'TIPS',
+    title: 'Sunscreen Under Makeup',
+    excerpt: 'The non-negotiable step for youthful skin.',
+    content: "Sunscreen is the best anti-aging product you can use. To layer it under makeup without pilling, choose a lightweight, gel-based SPF. Apply it after your moisturizer and wait 2-3 minutes for it to fully set. Then, apply your primer or foundation. Never mix SPF directly into your foundation as it dilutes the protection level. Reapply over makeup throughout the day using an SPF-powder or mist to maintain defense.",
+    image: blogFloating4,
+    date: 'FEB 10',
+    readTime: '4M'
+  },
+  {
+    id: 8,
+    category: 'TIPS',
+    title: 'Correcting Dark Circles',
+    excerpt: 'Use color theory for a wide-awake look.',
+    content: "If your concealer looks gray, you need a color corrector. For dark circles with blue/purple undertones, use a peach or orange corrector first. Apply only where it is dark, blend, and then follow with your skin-tone concealer. This neutralizes the darkness rather than just covering it. Set with a fine powder to prevent creasing and enjoy a bright, rested appearance all day.",
+    image: blogFloating2,
+    date: 'FEB 05',
+    readTime: '5M'
+  },
+  {
+    id: 9,
+    category: 'TIPS',
+    title: 'Overnight Lip Repair',
+    excerpt: 'Wake up to soft, supple lips every morning.',
+    content: "Lips don't have sweat or oil glands, making them prone to dryness. For an overnight repair, exfoliate gently with a sugar scrub, followed by a thick layer of a lip mask or organic balm. For extra repair, apply a drop of hyaluronic acid serum to damp lips before sealing it in with balm. This deep hydration treatment works while you sleep to heal cracks and restore volume.",
+    image: blogFloating3,
+    date: 'JAN 28',
+    readTime: '3M'
+  },
 ];
 
 const BlogSection = () => {
+  const [searchParams] = useSearchParams();
+  const catParam = searchParams.get('category');
+  
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [showAll, setShowAll] = useState(false);
+
+  const filteredBlogs = catParam 
+    ? blogs.filter(b => b.category.toLowerCase() === catParam.toLowerCase())
+    : blogs;
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -88,7 +126,8 @@ const BlogSection = () => {
     };
   }, [selectedBlog]);
 
-  const displayedBlogs = showAll ? blogs : blogs.slice(0, 3);
+  const displayedBlogs = showAll ? filteredBlogs : filteredBlogs.slice(0, 3);
+  const isTipsPage = catParam?.toLowerCase() === 'tips';
   const floatingSizeClasses = "w-14 md:w-44 h-14 md:h-44 overflow-hidden bg-white p-1 md:p-3 shadow-2xl border border-gray-100 flex items-center justify-center";
 
   return (
@@ -134,7 +173,7 @@ const BlogSection = () => {
               viewport={{ once: true }}
               className="font-decorative text-[1.8rem] md:text-[5rem] font-black text-[#5C2E3E] leading-none tracking-[0.05em] relative z-10 uppercase"
             >
-              JOURNAL
+              {isTipsPage ? 'BEAUTY TIPS' : 'JOURNAL'}
             </motion.h2>
           </div>
 

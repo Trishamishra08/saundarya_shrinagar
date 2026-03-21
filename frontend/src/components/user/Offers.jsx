@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProductCard from './ProductCard';
 import { useShop } from '../../context/ShopContext';
@@ -113,6 +113,32 @@ const offerProducts = [
 ];
 
 const Offers = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 5,
+    minutes: 45,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        let { hours, minutes, seconds } = prev;
+        if (seconds > 0) {
+          seconds--;
+        } else if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else if (hours > 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        }
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#FEFAF6] pb-20">
       {/* Premium Hero Section */}
@@ -122,31 +148,46 @@ const Offers = () => {
            <div className="absolute inset-0 bg-gradient-to-r from-brand-pink/20 to-brand-gold/20 mix-blend-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4">
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-brand-gold font-bold uppercase tracking-[0.6em] text-[10px] md:text-sm block mb-4"
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-block bg-[#FF9900] text-brand-dark font-black uppercase tracking-[0.4em] text-[8px] md:text-xs px-4 py-1.5 mb-8 shadow-[0_5px_30px_rgba(255,153,0,0.3)]"
           >
-            Exclusive Benefits
-          </motion.span>
+            Big Beauty Deals | Limited Time 
+          </motion.div>
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-decorative text-white mb-6 uppercase tracking-tight"
+            initial={{ opacity: 0, tracking: '0.2em' }}
+            animate={{ opacity: 1, tracking: '-0.05em' }}
+            transition={{ duration: 1, delay: 0.1 }}
+            className="text-5xl md:text-9xl font-sans font-black text-white mb-6 uppercase leading-none drop-shadow-2xl"
           >
-            Divine <span className="text-brand-pink italic">Offers</span>
+            Divine <br/> <span className="text-brand-gold underline decoration-brand-pink decoration-8 md:decoration-[16px] underline-offset-[10px] md:underline-offset-[20px]">SAVINGS</span>
           </motion.h1>
           <motion.p 
              initial={{ opacity: 0 }}
              animate={{ opacity: 1 }}
-             transition={{ delay: 0.3 }}
-             className="text-white/70 max-w-xl mx-auto text-xs md:text-base font-serif leading-relaxed italic"
+             transition={{ delay: 0.4 }}
+             className="text-white text-lg md:text-3xl font-sans font-black mb-10 tracking-tight"
           >
-            Unveil our most coveted treasures at prices that celebrate your inner radiance. 
-            Limited time arrangements curated just for you.
+            Up to <span className="text-brand-gold">50% OFF</span> | Starting at <span className="text-brand-pink">₹199</span>
           </motion.p>
+          <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.6 }}
+             className="flex flex-wrap items-center justify-center gap-6"
+          >
+             <div className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-widest text-[10px]">
+                <div className="w-1.5 h-1.5 bg-brand-gold rounded-full" /> Wide Selection
+             </div>
+             <div className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-widest text-[10px]">
+                <div className="w-1.5 h-1.5 bg-brand-pink rounded-full" /> Top Brands
+             </div>
+             <div className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-widest text-[10px]">
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full" /> Fast Delivery
+             </div>
+          </motion.div>
         </div>
       </section>
 
@@ -163,13 +204,23 @@ const Offers = () => {
               </p>
             </div>
             
-            <div className="flex gap-2">
-               <span className="px-4 py-2 bg-brand-pink/10 text-brand-pink text-[10px] font-black rounded-full uppercase tracking-widest">
-                 Upto 40% Off
-               </span>
-               <span className="px-4 py-2 bg-brand-gold/10 text-brand-gold text-[10px] font-black rounded-full uppercase tracking-widest">
-                 Flash Deals
-               </span>
+            <div className="flex flex-wrap gap-4">
+               <div className="flex flex-col items-center justify-center bg-brand-dark text-white px-4 py-2 rounded-xl border border-white/10 shadow-lg">
+                  <span className="text-[8px] font-black uppercase tracking-widest opacity-60">Offer Ends In</span>
+                  <div className="flex gap-2 font-black text-sm">
+                    <span>{String(timeLeft.hours).padStart(2, '0')}h</span>
+                    <span>{String(timeLeft.minutes).padStart(2, '0')}m</span>
+                    <span>{String(timeLeft.seconds).padStart(2, '0')}s</span>
+                  </div>
+               </div>
+               <div className="flex flex-col items-center justify-center bg-[#5C2E3E]/5 text-[#5C2E3E] px-4 py-2 rounded-xl border border-[#5C2E3E]/10">
+                  <span className="text-[8px] font-black uppercase tracking-widest opacity-60">Cashback Offer</span>
+                  <span className="text-sm font-black">Flat 15% CBC</span>
+               </div>
+               <div className="flex flex-col items-center justify-center bg-brand-gold/10 text-brand-gold px-4 py-2 rounded-xl border border-brand-gold/10">
+                  <span className="text-[8px] font-black uppercase tracking-widest opacity-60">Today's Perk</span>
+                  <span className="text-sm font-black">Free Delivery</span>
+               </div>
             </div>
           </div>
 

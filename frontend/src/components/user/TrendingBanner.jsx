@@ -17,34 +17,38 @@ import banner4 from '../../assets/images/trending_banner.png';
 const banners = [
   {
     image: '/banner_1.png',
-    subtitle: 'Find Your Perfect Shade',
-    title: 'Match Me',
-    description: 'Find your best shade, along with complexion must-haves perfect for your skin tone.',
-    btnText: 'MATCH ME',
-    link: '/shop?category=makeup'
+    subtitle: 'Seasonal Sale | Up to 50% Off',
+    title: 'Fashion & Beauty',
+    description: 'Grab the best deals on Skincare, Soaps and the new Innerwear collection.',
+    btnText: 'SHOP SALE',
+    price: '₹299',
+    link: '/shop'
   },
   {
     image: '/banner_2.png',
-    subtitle: 'Exclusive Range',
-    title: 'Organic Care',
-    description: 'Nourish your skin with our premium organic collection.',
-    btnText: 'SHOP NOW',
-    link: '/shop?category=skincare'
+    subtitle: 'Trending Now | Most Loved',
+    title: 'Jewellery & Makeup',
+    description: 'Discover the heritage jhumka collection and trending foundations.',
+    btnText: 'VIEW TRENDING',
+    price: '₹599',
+    link: '/shop?category=Beauty & Jewellery'
   },
   {
     image: '/banner_3.png',
-    subtitle: 'Luxe Essentials',
-    title: 'Makeup Artistry',
-    description: 'Master your look with our professional-grade makeup brushes and kits.',
-    btnText: 'VIEW PRODUCTS',
-    link: '/shop?category=makeup'
+    subtitle: 'Exclusive Combos | Extra Savings',
+    title: 'Gift Rituals',
+    description: 'Perfectly curated beauty sets for every occasion. Limited stock.',
+    btnText: 'EXPLORE COMBOS',
+    price: '₹899',
+    link: '/shop?category=Exclusive Combos'
   },
   {
     image: '/trending_banner.png',
-    subtitle: 'New Arrival',
-    title: 'Seasonal Glow',
-    description: 'Radiate beauty with our latest seasonal makeup essentials.',
-    btnText: 'SEE MORE',
+    subtitle: 'Bestseller Offers | Big Savings',
+    title: 'Daily Essentials',
+    description: 'The organic care you deserve at prices you will love. Start your journey today.',
+    btnText: 'GRAB DEALS',
+    price: '₹50',
     link: '/shop'
   }
 ];
@@ -99,21 +103,36 @@ const TrendingBanner = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="max-w-xl text-center md:text-left mx-auto md:mx-0"
                       >
-                        <span className="text-xs md:text-sm font-bold tracking-[0.4em] uppercase mb-4 block text-brand-gold">
-                          {item.subtitle}
-                        </span>
-                        <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-2 italic leading-none">
-                          {item.title}
+                        <div className="flex flex-col gap-2 mb-6">
+                           <div className="flex items-center justify-center md:justify-start gap-3">
+                              <span className="bg-brand-gold text-brand-dark text-[8px] md:text-[10px] font-black px-2 py-0.5 tracking-tighter uppercase">Limited Time Deal</span>
+                              <div className="h-[1px] w-12 bg-white/30" />
+                           </div>
+                           <h4 className="text-white text-3xl md:text-5xl lg:text-7xl font-sans font-black tracking-tighter leading-tight drop-shadow-2xl">
+                             Starting <span className="text-brand-gold underline decoration-white/20 underline-offset-8 decoration-4">{item.price || "₹199"}</span>
+                           </h4>
+                        </div>
+                        
+                        <h3 className="text-lg md:text-2xl lg:text-3xl font-sans font-bold text-white/90 mb-4 tracking-tight drop-shadow-lg">
+                          {item.subtitle} | <span className="text-brand-gold">Best Selection</span>
                         </h3>
-                        <p className="text-sm md:text-lg mb-8 opacity-90 font-medium max-w-sm mx-auto md:mx-0">
+                        
+                        <p className="text-xs md:text-sm mb-8 opacity-80 font-medium max-w-sm mx-auto md:mx-0 text-white/70 line-clamp-2">
                           {item.description}
                         </p>
-                        <Link to={item.link} className="inline-block bg-brand-dark hover:bg-brand-gold text-white border border-white/30 px-8 py-3 rounded-none text-xs md:text-sm font-bold tracking-widest transition-all duration-300 shadow-xl active:scale-95">
-                          {item.btnText}
-                        </Link>
+                        
+                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                           <Link to={item.link} className="bg-[#FF9900] hover:bg-[#FF8800] text-brand-dark px-10 py-3 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-[0_5px_20px_rgba(255,153,0,0.3)] active:scale-95">
+                             {item.btnText}
+                           </Link>
+                           <div className="text-[10px] text-white/60 font-medium tracking-tight border-l border-white/20 pl-4 py-1">
+                              Top Brands <br/> Fast Delivery
+                           </div>
+                        </div>
                       </motion.div>
                     </div>
                   </div>
+
                 </div>
               </SwiperSlide>
             ))}

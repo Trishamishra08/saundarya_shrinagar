@@ -153,7 +153,7 @@ const TrackOrder = () => {
                 </div>
               )}
 
-              {/* Compact Timeline */}
+              {/* Compact Timeline & Map */}
               <div className="bg-white p-6 md:p-10 border border-gray-100 shadow-lg relative overflow-hidden">
                   <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none -mr-4 -mt-4">
                      <FiTruck size={100} className="text-[#5C2E3E]" />
@@ -178,6 +178,21 @@ const TrackOrder = () => {
                             </div>
                         </div>
                       ))}
+                  </div>
+
+                  {/* Courier Tracking Map Feature */}
+                  <div className="mt-8 relative h-32 bg-gray-50 border border-gray-100 overflow-hidden group">
+                     <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=20.5937,78.9629&zoom=4&size=600x300&sensor=false')] bg-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-1000"></div>
+                     <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-white/90 backdrop-blur-sm px-4 py-1.5 border border-brand-pink/20 text-[7px] font-black uppercase tracking-[0.3em] text-[#5C2E3E] shadow-2xl">
+                           Courier Transit Map
+                        </div>
+                        <motion.div 
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }} 
+                          transition={{ duration: 3, repeat: Infinity }}
+                          className="absolute w-6 h-6 bg-brand-pink rounded-full border border-white"
+                        />
+                     </div>
                   </div>
               </div>
 

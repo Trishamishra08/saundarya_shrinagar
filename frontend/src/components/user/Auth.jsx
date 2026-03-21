@@ -25,23 +25,42 @@ const Auth = () => {
 
   const handleDetailsSubmit = (e) => {
     e.preventDefault();
+    const staticPhone = '8839044030';
+
     if (isLogin) {
-      if (form.phone.length === 10) setStep(2);
+      if (form.phone === staticPhone) {
+        setStep(2);
+      } else {
+        // Redirect logic: If not the fixed data, switch to register
+        alert("Account not found with this number. Redirecting to Registration...");
+        setIsLogin(false);
+        setStep(1);
+      }
     } else {
-      if (form.name && form.phone.length === 10 && form.email) setStep(2);
+      if (form.name && form.phone.length === 10 && form.email) {
+        setStep(2);
+      }
     }
   };
 
   const handleOtpSubmit = (e) => {
     e.preventDefault();
-    if (otp.join('').length === 4) {
+    const staticOtp = '1234';
+    
+    if (otp.join('') === staticOtp) {
       setIsAuthenticated(true);
       setUser({
-        name: isLogin ? 'Guest User' : form.name,
+        name: isLogin ? 'Trisha Mishra' : form.name,
         phone: form.phone,
-        email: form.email || 'guest@example.com'
+        email: form.email || 'trisha@example.com'
       });
-      navigate('/'); // redirect to shop or home
+      // Clear OTP and show success
+      setOtp(['', '', '', '']);
+      alert(isLogin ? "Welcome back, Trisha! Login Successful." : "Divine Account Created Successfully!");
+      navigate('/');
+    } else {
+      alert("Invalid OTP/Credentials. Please try again.");
+      setOtp(['', '', '', '']);
     }
   };
 
@@ -63,7 +82,7 @@ const Auth = () => {
             className="text-lg md:text-xl font-black text-[#5C2E3E] uppercase tracking-[0.15em] leading-[1.2] mb-8 flex flex-col items-center"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            <span className="text-[9px] font-sans font-black tracking-[0.4em] opacity-40 mb-1">Welcome to the</span>
+            <span className="text-[9px] font-sans font-black tracking-[0.4em] opacity-40 mb-1">OTP Login & Account Creation</span>
             World of Soundarya
           </h2>
           

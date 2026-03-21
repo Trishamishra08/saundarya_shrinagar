@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import AdminLayout from './AdminLayout';
 import { 
@@ -10,111 +10,233 @@ import {
   FiPlus,
   FiMoreVertical
 } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { initialProducts } from '../../data/products';
+import catSkincare from '../../assets/images/cat_skincare_new.png';
+import catHaircare from '../../assets/images/cat_haircare_new.png';
+import catMakeup from '../../assets/images/cat_makeup_new.png';
+import catSoaps from '../../assets/images/cat_soaps.png';
+import catJewellery from '../../assets/images/cat_jewellery.png';
+import catInnerwear from '../../assets/images/cat_innerwear.png';
+import catWellness from '../../assets/images/cat_wellness_new.png';
+import catBeautyKits from '../../assets/images/cat_beautykits_new.png';
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState('overview');
+  const categories = [
+    { id: 'Skincare', name: 'Skincare', image: catSkincare },
+    { id: 'Soaps', name: 'Soaps', image: catSoaps },
+    { id: 'Makeup', name: 'Makeup', image: catMakeup },
+    { id: 'Jewellery', name: 'Jewellery', image: catJewellery },
+    { id: 'Innerwear', name: 'Innerwear', image: catInnerwear },
+    { id: 'Haircare', name: 'Haircare', image: catHaircare },
+    { id: 'Wellness', name: 'Wellness', image: catWellness },
+    { id: 'Combos', name: 'Combos', image: catBeautyKits },
+  ];
 
   const stats = [
-    { title: 'Total Products', value: '1,248', change: '+12%', icon: <FiPackage />, color: 'bg-blue-500' },
-    { title: 'Registered Users', value: '8,420', change: '+5%', icon: <FiUsers />, color: 'bg-purple-500' },
-    { title: 'Categories', value: '24', change: '0%', icon: <FiLayers />, color: 'bg-brand-gold' },
-    { title: 'Active Banners', value: '5', change: '+2', icon: <FiImage />, color: 'bg-brand-pink' },
+    { title: 'Total Products', value: initialProducts.length, change: '+12%', icon: <FiPackage />, color: 'bg-brand-pink text-brand-dark', path: '/admin/products' },
+    { title: 'Registered Users', value: '8,420', change: '+5%', icon: <FiUsers />, color: 'bg-brand-gold text-brand-dark shadow-brand-gold/20', path: '/admin/customers' },
+    { title: 'Categories', value: categories.length, change: '0%', icon: <FiLayers />, color: 'bg-brand-dark text-white shadow-brand-dark/20', path: '/admin/categories' },
+    { title: 'Live Banners', value: '4', change: '+1', icon: <FiImage />, color: 'bg-white text-brand-pink border border-brand-pink/20', path: '/admin/banners' },
   ];
 
   const recentOrders = [
-    { id: '#8821', customer: 'Ananya Sharma', product: 'Silk Radiance Cream', date: '2 mins ago', status: 'Processing', amount: '₹1,250' },
-    { id: '#8820', customer: 'Rahul Verma', product: 'Gold Glow Serum', date: '15 mins ago', status: 'Shipped', amount: '₹2,400' },
-    { id: '#8819', customer: 'Priya Patel', product: 'Organic Face Wash', date: '1 hour ago', status: 'Delivered', amount: '₹850' },
-    { id: '#8818', customer: 'Sneha Gupta', product: 'Bridal Kit Premium', date: '3 hours ago', status: 'Pending', amount: '₹5,600' },
+    { id: '#8821', customer: 'Ananya Sharma', product: initialProducts[0].name, date: '2 mins ago', status: 'Processing', amount: `₹${initialProducts[0].price}` },
+    { id: '#8820', customer: 'Rahul Verma', product: initialProducts[1].name, date: '15 mins ago', status: 'Shipped', amount: `₹${initialProducts[1].price}` },
+    { id: '#8819', customer: 'Priya Patel', product: initialProducts[2].name, date: '1 hour ago', status: 'Delivered', amount: `₹${initialProducts[2].price}` },
+    { id: '#8818', customer: 'Sneha Gupta', product: initialProducts[3].name, date: '3 hours ago', status: 'Pending', amount: `₹${initialProducts[3].price}` },
   ];
 
   return (
     <AdminLayout>
-      <div className="max-w-7xl mx-auto">
-        {/* Welcome Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Compact Welcome Section */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-xl md:text-2xl font-decorative font-black text-brand-dark uppercase tracking-tight mb-1">
-              Dashboard Overview
+            <h1 className="text-xl md:text-2xl font-serif font-black text-brand-dark uppercase tracking-widest leading-none mb-1">
+              Store Control Center
             </h1>
-            <p className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">Store performance metrics</p>
+            <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
+              <span className="w-6 h-[1px] bg-brand-pink/30" /> Real-time Catalog Tracking
+            </p>
           </div>
           
           <div className="flex items-center gap-2">
-            <button className="bg-white text-brand-dark px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest border border-brand-pink/10 shadow-sm hover:bg-gray-50 transition-all">
+            <button className="bg-white text-brand-dark px-4 py-2 rounded-none text-[9px] font-black uppercase tracking-widest border border-brand-pink/10 hover:shadow-md transition-all">
               Export
             </button>
-            <button className="bg-brand-dark text-white px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest shadow-lg shadow-brand-dark/10 flex items-center gap-2 hover:bg-black transition-all">
-              <FiPlus /> Add New
-            </button>
+            <Link to="/admin/products?add=true" className="bg-brand-dark text-white px-4 py-2 rounded-none text-[9px] font-black uppercase tracking-widest shadow-lg shadow-brand-dark/10 flex items-center gap-2 hover:bg-black transition-all cursor-pointer">
+              <FiPlus /> New Entry
+            </Link>
           </div>
         </div>
 
-        {/* Compact Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.title}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white p-4 rounded-xl border border-brand-pink/5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer"
-            >
-              <div className="flex justify-between items-start mb-3">
-                <div className={`${stat.color} p-2 rounded-lg text-white shadow-sm opacity-80 group-hover:opacity-100 transition-opacity`}>
-                  {React.cloneElement(stat.icon, { size: 14 })}
+        {/* Ultra-Compact Stats Grid - Now Clickable */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { title: 'Total Products', value: '1,280', change: '+12%', icon: <FiPackage />, link: '/admin/products' },
+            { title: 'Registered Users', value: '24,500', change: '+18%', icon: <FiUsers />, link: '/admin/users' },
+            { title: 'Categories', value: '12', change: '8 Active', icon: <FiLayers />, link: '/admin/categories' },
+            { title: 'Live Banners', value: '6', change: '4 Active', icon: <FiImage />, link: '/admin/banners' }
+          ].map((stat, i) => (
+            <Link to={stat.link} key={i}>
+              <motion.div 
+                whileHover={{ y: -3 }}
+                className="bg-white p-3 rounded-none border border-brand-pink/10 shadow-md group cursor-pointer transition-all"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <div className="p-2 bg-brand-light/50 text-brand-dark rounded-none group-hover:bg-brand-gold group-hover:text-white transition-colors">
+                    {stat.icon}
+                  </div>
+                  <span className="text-[8px] font-black text-green-600 bg-green-50 px-1.5 py-0.5 rounded-none">{stat.change}</span>
                 </div>
-                <div className="flex items-center text-[8px] font-black text-green-500 bg-green-50 px-1.5 py-0.5 rounded">
-                  {stat.change} <FiArrowUpRight className="ml-0.5" />
-                </div>
-              </div>
-              <p className="text-gray-400 text-[8px] font-black uppercase tracking-[0.2em] mb-0.5">{stat.title}</p>
-              <p className="text-xl font-serif font-black text-brand-dark">{stat.value}</p>
-            </motion.div>
+                <h3 className="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-0.5">{stat.title}</h3>
+                <p className="text-lg font-serif font-black text-brand-dark">{stat.value}</p>
+              </motion.div>
+            </Link>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Main Table Area */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl border border-brand-pink/5 shadow-sm overflow-hidden">
-              <div className="p-4 border-b border-gray-50 flex justify-between items-center bg-[#FDFCFB]">
-                <h3 className="text-xs font-decorative font-black text-[#5C2E3E] uppercase tracking-wider">Recent Orders</h3>
-                <button className="text-gray-300 hover:text-brand-dark"><FiMoreVertical /></button>
+        {/* Categories Directory Section - Now Clickable */}
+        <div className="bg-white/60 p-3 rounded-none border border-brand-pink/10 shadow-sm">
+          <h3 className="text-xs font-serif font-black text-brand-dark uppercase tracking-widest mb-4 flex items-center gap-2">
+            <FiLayers size={12} className="text-brand-gold" /> Store Categories
+          </h3>
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
+            {categories.map((cat) => (
+              <Link to="/admin/categories" key={cat.id} className="flex flex-col items-center group cursor-pointer text-center">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-none overflow-hidden mb-1.5 border border-brand-pink/10 group-hover:border-brand-gold transition-all shadow-inner bg-white">
+                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all scale-90" />
+                </div>
+                <span className="text-[8px] md:text-[9px] font-black text-brand-dark group-hover:text-brand-gold uppercase truncate w-full tracking-tighter">
+                  {cat.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {/* Main Catalog View */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="bg-white rounded-none border border-brand-pink/10 shadow-xl shadow-brand-pink/[0.02] overflow-hidden">
+              <div className="p-3 border-b border-brand-pink/5 flex justify-between items-center bg-brand-light/30">
+                <h3 className="text-[10px] font-serif font-black text-brand-dark uppercase tracking-widest">Active Inventory</h3>
+                <span className="px-2 py-0.5 bg-brand-pink/10 text-brand-pink text-[7px] font-black uppercase rounded-none border border-brand-pink/20">
+                  {initialProducts.length} Items
+                </span>
               </div>
               
-              <div className="overflow-x-auto">
+              <div className="p-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+                {initialProducts.slice(0, 6).map((product) => (
+                  <div key={product.id} className="flex gap-3 bg-brand-light/10 p-2 rounded-none border border-brand-pink/5 hover:border-brand-pink/20 transition-all group overflow-hidden relative">
+                    <div className="w-12 h-12 bg-white rounded-none overflow-hidden shrink-0 border border-brand-pink/10 shadow-inner">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform" />
+                    </div>
+                    <div className="flex-1 min-w-0 flex flex-col justify-center">
+                      <p className="text-[9px] font-black text-brand-dark uppercase truncate leading-tight mb-1">{product.name}</p>
+                      <div className="flex items-center gap-2">
+                         <span className="text-brand-pink font-black text-[10px]">₹{product.price}</span>
+                         <span className="text-[7px] text-gray-400 font-bold uppercase tracking-widest leading-none">{product.category}</span>
+                      </div>
+                    </div>
+                    {product.flashSale && <div className="absolute top-0 right-0 bg-brand-gold text-brand-dark text-[6px] font-black px-1.5 py-0.5 rounded-none uppercase tracking-widest">Sale</div>}
+                  </div>
+                ))}
+              </div>
+              
+              <div className="p-3 bg-brand-light/10 border-t border-brand-pink/5 text-center">
+                <button className="text-[8px] font-black uppercase tracking-widest text-brand-gold hover:text-brand-dark transition-all flex items-center justify-center mx-auto gap-1">
+                  Browse Catalog <FiArrowUpRight />
+                </button>
+              </div>
+            </div>
+
+            {/* Sales Analytics - NEW SVG Line Graph for 100% Visibility */}
+            <div className="bg-white rounded-2xl border border-brand-pink/10 shadow-xl shadow-brand-pink/[0.02] overflow-hidden">
+               <div className="p-4 border-b border-brand-pink/5 flex items-center justify-between bg-white">
+                  <div>
+                    <h3 className="text-[10px] font-serif font-black text-brand-dark uppercase tracking-widest leading-none mb-1">Revenue Stream</h3>
+                    <p className="text-[8px] text-gray-400 font-bold uppercase tracking-tighter opacity-70">Weekly sales analytics</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-[8px] font-black text-green-600 bg-green-50 px-2 py-1 rounded-lg border border-green-100 uppercase tracking-widest">
+                    <FiArrowUpRight size={10} /> Live Data
+                  </div>
+               </div>
+               <div className="p-6">
+                  <div className="h-40 w-full relative">
+                    {/* SVG Line Graph */}
+                    <svg className="w-full h-full overflow-visible" viewBox="0 0 700 160">
+                      {/* Grid Lines */}
+                      {[0, 40, 80, 120, 160].map(y => (
+                        <line key={y} x1="0" y1={y} x2="700" y2={y} stroke="#FBD5DA" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+                      ))}
+                      
+                      {/* The Line */}
+                      <motion.polyline
+                        fill="none"
+                        stroke="#E8B4B8"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        points="0,120 100,60 200,90 300,30 400,70 500,20 600,50 700,40"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                      />
+                      
+                      {/* Data Points */}
+                      {[
+                        { x: 0, v: 120, l: 'Mon' }, { x: 100, v: 60, l: 'Tue' }, { x: 200, v: 90, l: 'Wed' }, 
+                        { x: 300, v: 30, l: 'Thu' }, { x: 400, v: 70, l: 'Fri' }, { x: 500, v: 20, l: 'Sat' }, 
+                        { x: 600, v: 50, l: 'Sun' }, { x: 700, v: 40, l: 'Next' }
+                      ].map((p, i) => (
+                        <g key={i}>
+                          <motion.circle 
+                            initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.1 + 1 }}
+                            cx={p.x} cy={p.v} r="4" fill="white" stroke="#5C2E3E" strokeWidth="2" 
+                          />
+                          <text x={p.x} y="180" textAnchor="middle" className="text-[14px] fill-gray-400 font-black uppercase">{p.l}</text>
+                        </g>
+                      ))}
+                    </svg>
+                  </div>
+               </div>
+            </div>
+
+            {/* Recent Orders - More Data */}
+            <div className="bg-white rounded-2xl border border-brand-pink/10 shadow-xl shadow-brand-pink/[0.01] overflow-hidden">
+               <div className="p-4 border-b border-brand-pink/5 bg-gray-50/20 flex items-center justify-between">
+                  <h3 className="text-[9px] font-serif font-black text-brand-dark uppercase tracking-widest">Recent Sales</h3>
+                  <button className="text-gray-300 hover:text-brand-dark"><FiMoreVertical size={14}/></button>
+               </div>
+               <div className="overflow-x-auto">
                 <table className="w-full text-left">
-                  <thead>
-                    <tr className="bg-gray-50/30">
-                      <th className="px-5 py-3 text-[8px] font-black uppercase tracking-widest text-gray-400">Order</th>
-                      <th className="px-5 py-3 text-[8px] font-black uppercase tracking-widest text-gray-400">Customer</th>
-                      <th className="px-5 py-3 text-[8px] font-black uppercase tracking-widest text-gray-400">Status</th>
-                      <th className="px-5 py-3 text-[8px] font-black uppercase tracking-widest text-gray-400">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-50">
-                    {recentOrders.map((order) => (
+                  <tbody className="divide-y divide-brand-pink/5">
+                    {[
+                      ...recentOrders,
+                      { id: '#8817', customer: 'Meera Das', product: 'Silk Soap Set', date: '5 hours ago', status: 'Shipped', amount: '₹1,250' },
+                      { id: '#8816', customer: 'Vikram Singh', product: 'Kajal Duo', date: '12 hours ago', status: 'Delivered', amount: '₹890' },
+                      { id: '#8815', customer: 'Kavita Iyer', product: 'Hair Oil', date: '1 day ago', status: 'Processing', amount: '₹450' }
+                    ].map((order) => (
                       <tr key={order.id} className="hover:bg-brand-pink/[0.02] transition-colors group">
-                        <td className="px-5 py-3">
-                          <p className="text-[11px] font-black text-brand-dark">{order.id}</p>
-                          <p className="text-[9px] text-gray-400 font-medium">{order.date}</p>
+                        <td className="px-5 py-2.5">
+                          <p className="text-[9px] font-black text-brand-dark opacity-50">{order.id}</p>
                         </td>
-                        <td className="px-5 py-3">
-                          <p className="text-[11px] font-bold text-brand-dark">{order.customer}</p>
-                          <p className="text-[9px] text-gray-400 font-medium">{order.product}</p>
+                        <td className="px-5 py-2.5">
+                          <p className="text-[10px] font-bold text-brand-dark leading-none mb-1">{order.customer}</p>
+                          <p className="text-[8px] text-brand-pink font-bold truncate uppercase opacity-70">{order.product}</p>
                         </td>
-                        <td className="px-5 py-3">
-                          <span className={`text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full ${
-                            order.status === 'Delivered' ? 'bg-green-50 text-green-600' :
-                            order.status === 'Processing' ? 'bg-blue-50 text-blue-600' :
-                            order.status === 'Shipped' ? 'bg-purple-50 text-purple-600' :
-                            'bg-yellow-50 text-yellow-600'
+                        <td className="px-3 py-2">
+                          <span className={`text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border ${
+                            order.status === 'Delivered' ? 'bg-green-50 border-green-100 text-green-600' :
+                            order.status === 'Shipped' ? 'bg-blue-50 border-blue-100 text-blue-600' :
+                            'bg-brand-light/30 border-brand-pink/10 text-brand-dark'
                           }`}>
                             {order.status}
                           </span>
                         </td>
-                        <td className="px-5 py-3 text-[11px] font-black text-brand-dark">
+                        <td className="px-3 py-2 text-[10px] font-black text-brand-dark text-right">
                           {order.amount}
                         </td>
                       </tr>
@@ -122,61 +244,88 @@ const AdminDashboard = () => {
                   </tbody>
                 </table>
               </div>
-              
-              <div className="p-3 bg-gray-50/20 border-t border-gray-50 text-center">
-                <button className="text-[8px] font-black uppercase tracking-widest text-brand-gold hover:text-brand-dark transition-colors">
-                  Full Order History
-                </button>
-              </div>
             </div>
           </div>
 
-          {/* Quick Stats / Management Area */}
-          <div className="space-y-4">
-            {/* Category Performance */}
-            <div className="bg-[#1A1A1A] text-white p-5 rounded-xl shadow-lg relative group overflow-hidden">
-              <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-brand-gold mb-5 relative z-10">Categories Performance</h3>
-              <div className="space-y-4 relative z-10">
+          {/* Right: Quick Stats Sidebar */}
+          <div className="space-y-6">
+            {/* NEW: Side Growth Graph */}
+            <div className="bg-white p-3 rounded-none border border-brand-pink/10 shadow-xl overflow-hidden">
+               <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-[10px] font-serif font-black text-brand-dark uppercase tracking-widest">Growth Trend</h3>
+                  <span className="text-[8px] font-black text-green-600 bg-green-50 px-1.5 py-0.5 rounded-none">+15%</span>
+               </div>
+               <div className="h-20 w-full relative">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 200 60">
+                    <motion.path
+                      d="M0,50 Q40,40 80,10 T150,30 T200,5"
+                      fill="none"
+                      stroke="#E8B4B8"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                    />
+                    <motion.path
+                      d="M0,50 Q40,40 80,10 T150,30 T200,5 V60 H0 Z"
+                      fill="url(#gradient-side)"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.1 }}
+                      transition={{ delay: 0.5 }}
+                    />
+                    <defs>
+                      <linearGradient id="gradient-side" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#E8B4B8" />
+                        <stop offset="100%" stopColor="transparent" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+               </div>
+               <p className="text-[8px] text-gray-400 font-bold uppercase tracking-widest mt-2 text-center">Engagement last 30 days</p>
+            </div>
+
+            <div className="bg-brand-dark text-white p-4 rounded-none shadow-xl border border-brand-pink/10">
+              <h3 className="text-[10px] font-serif font-black uppercase tracking-[0.25em] text-brand-gold mb-3 border-b border-white/5 pb-2">Product Distribution</h3>
+              <div className="space-y-3">
                 {[
-                  { name: 'Skincare', sales: '₹42K', color: 'bg-brand-pink', width: '85%' },
-                  { name: 'Makeup', sales: '₹28K', color: 'bg-brand-gold', width: '65%' },
-                  { name: 'Wellness', sales: '₹12K', color: 'bg-white/20', width: '35%' }
+                  { name: 'Skincare', sales: '85%', color: 'bg-brand-pink' },
+                  { name: 'Soaps', sales: '65%', color: 'bg-brand-gold' },
+                  { name: 'Makeup', sales: '45%', color: 'bg-white/40' },
+                  { name: 'Jewellery', sales: '30%', color: 'bg-brand-pink/60' },
+                  { name: 'Haircare', sales: '55%', color: 'bg-brand-gold/60' }
                 ].map((cat) => (
                   <div key={cat.name}>
-                    <div className="flex justify-between text-[10px] font-bold uppercase mb-1.5 opacity-80">
+                    <div className="flex justify-between text-[10px] font-black uppercase tracking-tight mb-1.5 opacity-90">
                       <span>{cat.name}</span>
                       <span className="text-brand-gold">{cat.sales}</span>
                     </div>
-                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                      <div className={`h-full ${cat.color} rounded-full`} style={{ width: cat.width }}></div>
+                    <div className="h-1 bg-white/5 rounded-none overflow-hidden">
+                      <motion.div initial={{ width: 0 }} animate={{ width: cat.sales }} transition={{ duration: 1 }} className={`h-full ${cat.color}`} />
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Banner Preview Card */}
-            <div className="bg-white p-5 rounded-xl border border-brand-pink/5 shadow-sm">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-[8px] font-black uppercase tracking-widest text-gray-400 font-sans">Brand Banners</h3>
-                <span className="text-[7px] bg-brand-pink text-white px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">Live</span>
+            <div className="bg-white p-5 rounded-2xl border border-brand-pink/10 shadow-xl overflow-hidden relative">
+              <div className="flex justify-between items-center mb-4 text-brand-dark">
+                <Link to="/admin/banners" className="text-[10px] font-serif font-black uppercase tracking-widest hover:text-brand-pink transition-colors">Banner Wall</Link>
+                <FiImage className="text-brand-gold" size={12} />
               </div>
-              <div className="space-y-2.5">
-                {[1, 2].map((b) => (
-                  <div key={b} className="flex gap-3 items-center bg-gray-50/50 p-2 rounded-lg group cursor-pointer hover:bg-brand-pink/[0.05] transition-colors border border-transparent hover:border-brand-pink/10">
-                    <div className="w-10 h-10 bg-gray-100 rounded-md overflow-hidden shrink-0">
-                      <img src={`https://picsum.photos/seed/${b+50}/100/100`} alt="Banner" className="w-full h-full object-cover" />
+              <div className="grid grid-cols-2 gap-2">
+                {[1, 2, 3, 4].map((b) => (
+                  <Link to="/admin/banners" key={b} className="aspect-[4/3] bg-brand-light/30 rounded-lg overflow-hidden border border-brand-pink/5 group cursor-pointer relative block">
+                    <img src={`/banner_${b % 3 + 1}.png`} alt="B" className="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80" />
+                    <div className="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                       <span className="text-[7px] text-white font-black uppercase tracking-widest bg-brand-dark/60 px-2 py-1 rounded">Manage</span>
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] font-black text-brand-dark uppercase truncate">Carousel {b}</p>
-                      <p className="text-[7px] text-gray-400 font-bold uppercase tracking-widest">Active</p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
-              <button className="w-full mt-4 py-2 text-[8px] font-black uppercase tracking-[0.2em] text-[#5C2E3E]/40 border border-dashed border-gray-200 rounded-lg hover:border-brand-gold hover:text-brand-gold transition-all">
-                Update Carousel
-              </button>
+              <Link to="/admin/banners" className="w-full block text-center mt-4 py-2.5 text-[8px] font-black uppercase tracking-[0.2em] text-brand-pink hover:text-brand-gold transition-colors border border-brand-pink/10 rounded-xl bg-brand-pink/5">
+                Manage Banners
+              </Link>
             </div>
           </div>
         </div>

@@ -3,27 +3,27 @@ import { motion } from 'framer-motion';
 
 const Newsletter = () => {
   return (
-    <section className="py-20 bg-brand-pink/30">
-      <div className="container mx-auto px-4 md:px-8 text-center">
-        <div className="max-w-2xl mx-auto italic">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-brand-dark">Join Our Beauty Community</h2>
-          <p className="text-gray-600 mb-8 font-medium">Get beauty tips, exclusive offers, and stay updated with our latest organic launches from Soundarya Shrinagar.</p>
+    <section className="py-6 bg-brand-pink/15">
+      <div className="container mx-auto px-4 text-center">
+        <div className="max-w-md mx-auto">
+          <h2 className="text-[11px] md:text-[13px] font-black mb-1 text-brand-dark uppercase tracking-[0.3em]">Join Our Community</h2>
+          <p className="text-[8px] md:text-[9px] text-gray-400 mb-4 font-bold uppercase tracking-widest">Get our latest organic launches.</p>
           
-          <form className="flex flex-col md:flex-row gap-4">
+          <form className="flex flex-col md:flex-row gap-2 max-w-xs mx-auto">
             <input 
               type="email" 
-              placeholder="Enter your email address"
-              className="flex-1 px-6 py-4 rounded-none border-none focus:ring-2 focus:ring-brand-gold outline-none shadow-sm bg-white"
+              placeholder="Email address"
+              className="flex-1 px-3 py-1.5 rounded-none border border-brand-pink/10 focus:ring-0.5 focus:ring-brand-gold outline-none bg-white text-[8px] tracking-widest uppercase"
               required
             />
             <button 
               type="submit"
-              className="bg-brand-dark text-white px-10 py-4 rounded-none font-bold hover:bg-brand-gold transition-colors shadow-lg"
+              className="bg-brand-dark text-white px-5 py-1.5 rounded-none text-[8px] font-black uppercase tracking-widest hover:bg-brand-gold transition-all active:scale-95 shadow-sm"
             >
-              Subscribe Now
+              Subscribe
             </button>
           </form>
-          <p className="text-xs text-gray-400 mt-4 italic">By subscribing, you agree to our Terms and Privacy Policy.</p>
+          <p className="text-[7px] text-gray-400 mt-2 italic uppercase tracking-tighter opacity-70">Agree to Terms & Privacy</p>
         </div>
       </div>
     </section>

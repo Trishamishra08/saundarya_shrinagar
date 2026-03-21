@@ -4,340 +4,32 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiSearch, FiChevronDown, FiGrid, FiList, FiCheck, FiFilter, FiX } from 'react-icons/fi';
 
 // Assets
-import imgTirtirRed from '../../assets/products/tirtir_red_cushion.png';
-import imgTirtirPink from '../../assets/products/tirtir_pink_cushion.png';
-import imgTirtirConcealer from '../../assets/products/tirtir_concealer_stick.png';
-import imgCatkin from '../../assets/products/catkin_oriental_lipstick.png';
-import imgVerymiss from '../../assets/products/verymiss_lipstick_set.png';
-import imgRoseGold from '../../assets/products/rose_gold_eyeshadow_palette.png';
-import imgLakmePowder from '../../assets/products/lakme_face_powder.png';
-import imgLipGloss from '../../assets/products/plumping_lip_gloss.png';
-import imgMascara from '../../assets/products/volumizing_mascara.png';
-import imgLipstick from '../../assets/products/lakme_2_in_1_lipstick.png';
-import imgHighlighter from '../../assets/products/liquid_highlighter.png';
+import { initialProducts } from '../../data/products';
 
 const categories = [
   { id: 'all', name: 'All' },
-  { id: 'skincare', name: 'Skincare' },
-  { id: 'haircare', name: 'Haircare' },
-  { id: 'makeup', name: 'Makeup' },
-  { id: 'bath & body', name: 'Bath & Body' },
-  { id: 'organic wellness', name: 'Organic Wellness' },
-  { id: 'beauty kits', name: 'Beauty Kits' },
-  { id: 'fragrances', name: 'Fragrances' },
-  { id: 'essential oils', name: 'Essential Oils' },
+  { id: 'Skincare', name: 'Skincare' },
+  { id: 'Soaps', name: 'Soaps' },
+  { id: 'Haircare', name: 'Haircare' },
+  { id: 'Makeup', name: 'Makeup' },
+  { id: 'Jewellery', name: 'Jewellery' },
+  { id: 'Innerwear', name: 'Innerwear' },
+  { id: 'Wellness', name: 'Wellness' },
+  { id: 'Combos', name: 'Combos' },
 ];
 
 const subCategoriesMap = {
-  skincare: ['Cleanser', 'Face Wash', 'Toner', 'Serum', 'Moisturizer', 'Sunscreen', 'Face Oil', 'Face Mask'],
-  haircare: ['Shampoo', 'Conditioner', 'Hair Mask', 'Hair Oil', 'Serum'],
-  makeup: ['Foundation', 'Compact', 'Lipstick', 'Lip Balm', 'Kajal / Eyeliner', 'Mascara', 'Blush', 'Highlighter'],
-  'bath & body': ['Body Wash', 'Body Scrub', 'Hand Cream', 'Foot Cream', 'Soap'],
-  'organic wellness': ['Supplements', 'Herbal Tea', 'Detox Kits'],
-  'beauty kits': ['Festive Combos', 'Bridal Kits', 'Travel Sets'],
-  fragrances: ['Perfume', 'Body Mist', 'Attar', 'Scented Candles'],
-  'essential oils': ['Pure Oils', 'Blended Oils', 'Diffusers'],
+  'Skincare': ['Cleanser', 'Face Wash', 'Toner', 'Serum', 'Moisturizer', 'Sunscreen'],
+  'Soaps': ['Natural', 'Herbal', 'Handmade'],
+  'Haircare': ['Hair Oil', 'Shampoo', 'Conditioner'],
+  'Makeup': ['Foundation', 'Compact', 'Lipstick', 'Lip Balm', 'Eyes', 'Kajal'],
+  'Jewellery': ['Traditional', 'Modern', 'Antique'],
+  'Innerwear': ['Daily', 'Premium', 'Lace'],
+  'Wellness': ['Supplements', 'Detox'],
+  'Combos': ['Gifts', 'Festive'],
 };
 
-const initialProducts = [
-  // --- SKINCARE ---
-  {
-    id: 1,
-    name: 'Hydrating Cleanser',
-    price: 850,
-    rating: 5,
-    reviews: 120,
-    image: imgTirtirPink,
-    category: 'skincare',
-    subCategory: 'Cleanser',
-    description: 'Gentle hydration for a fresh reset.',
-    label: 'Bestseller',
-    skinType: 'Dry',
-    concern: 'Dryness'
-  },
-  {
-    id: 101,
-    name: 'Purifying Foam Wash',
-    price: 550,
-    rating: 4,
-    reviews: 89,
-    image: imgTirtirConcealer,
-    category: 'skincare',
-    subCategory: 'Face Wash',
-    description: 'Deep pore cleansing with tea tree.',
-    skinType: 'Oily',
-    concern: 'Acne'
-  },
-  {
-    id: 102,
-    name: 'Rose Water Toner',
-    price: 450,
-    rating: 5,
-    reviews: 210,
-    image: imgLipstick,
-    category: 'skincare',
-    subCategory: 'Toner',
-    description: 'Pore tightening floral mist.',
-    skinType: 'Sensitive',
-    concern: 'Glow'
-  },
-  {
-    id: 103,
-    name: 'Glow Vit-C Serum',
-    price: 1850,
-    oldPrice: 2200,
-    rating: 5,
-    reviews: 450,
-    discount: '15%',
-    image: imgTirtirRed,
-    category: 'skincare',
-    subCategory: 'Serum',
-    description: 'Pure Vitamin C for an instant radiance.',
-    label: 'New',
-    skinType: 'Combination',
-    concern: 'Pigmentation'
-  },
-  {
-    id: 104,
-    name: 'Deep Sea Moisturizer',
-    price: 1250,
-    rating: 4,
-    reviews: 167,
-    image: imgTirtirPink,
-    category: 'skincare',
-    subCategory: 'Moisturizer',
-    description: '24-hour hydration lock.',
-    skinType: 'Dry',
-    concern: 'Dryness'
-  },
-  {
-    id: 105,
-    name: 'Invisible Sunscreen SPF 50',
-    price: 950,
-    rating: 5,
-    reviews: 340,
-    image: imgLakmePowder,
-    category: 'skincare',
-    subCategory: 'Sunscreen',
-    description: 'Ultra-light protection with zero white cast.',
-    skinType: 'All',
-    concern: 'Anti-aging'
-  },
-  {
-    id: 106,
-    name: 'Kumkumadi Face Oil',
-    price: 2450,
-    rating: 5,
-    reviews: 567,
-    image: imgHighlighter,
-    category: 'skincare',
-    subCategory: 'Face Oil',
-    description: 'The miracle elixir for overnight glow.',
-    label: 'Limited Edition',
-    skinType: 'All',
-    concern: 'Glow'
-  },
-  {
-    id: 107,
-    name: 'Saffron & Honey Mask',
-    price: 899,
-    rating: 5,
-    reviews: 123,
-    image: imgRoseGold,
-    category: 'skincare',
-    subCategory: 'Face Mask',
-    description: 'Traditional detox for tired skin.',
-    skinType: 'All',
-    concern: 'Glow'
-  },
 
-  // --- HAIRCARE ---
-  {
-    id: 151,
-    name: 'Onion Hair Oil',
-    price: 599,
-    rating: 5,
-    reviews: 890,
-    image: imgVerymiss,
-    category: 'haircare',
-    subCategory: 'Hair Oil',
-    description: 'Strengthens roots and reduces hair fall.',
-    label: 'Bestseller'
-  },
-  {
-    id: 152,
-    name: 'Argan Serum',
-    price: 850,
-    rating: 4,
-    reviews: 320,
-    image: imgTirtirConcealer,
-    category: 'haircare',
-    subCategory: 'Serum',
-    description: 'Smooth and frizz-free locks.'
-  },
-
-  // --- MAKEUP ---
-  {
-    id: 201,
-    name: 'Oriental Silk Foundation',
-    price: 2850,
-    oldPrice: 3200,
-    rating: 5,
-    reviews: 890,
-    discount: '10%',
-    image: imgLakmePowder,
-    category: 'makeup',
-    subCategory: 'Foundation',
-    description: 'Breathable HD coverage.',
-    label: 'Bestseller'
-  },
-  {
-    id: 202,
-    name: 'Velvet Matte Compact',
-    price: 750,
-    rating: 4,
-    reviews: 450,
-    image: imgTirtirRed,
-    category: 'makeup',
-    subCategory: 'Compact',
-    description: 'Weightless touch-up for all-day matte.'
-  },
-  {
-    id: 203,
-    name: 'Imperial Red Lipstick',
-    price: 1599,
-    rating: 5,
-    reviews: 1200,
-    image: imgCatkin,
-    category: 'makeup',
-    subCategory: 'Lipstick',
-    description: 'Carved art meets intense pigment.',
-    label: 'Bestseller'
-  },
-  {
-    id: 204,
-    name: 'Petal Soft Lip Balm',
-    price: 350,
-    rating: 5,
-    reviews: 230,
-    image: imgLipstick,
-    category: 'makeup',
-    subCategory: 'Lip Balm',
-    description: 'Organic tint with cocoa butter.'
-  },
-  {
-    id: 205,
-    name: 'Midnight Kajal Pencil',
-    price: 450,
-    rating: 4,
-    reviews: 980,
-    image: imgTirtirConcealer,
-    category: 'makeup',
-    subCategory: 'Kajal / Eyeliner',
-    description: 'Smudge-proof 24-hour intense black.'
-  },
-  {
-    id: 206,
-    name: 'Volumizing Power Mascara',
-    price: 999,
-    rating: 5,
-    reviews: 1500,
-    image: imgMascara,
-    category: 'makeup',
-    subCategory: 'Mascara',
-    description: 'Infinite length and lift.'
-  },
-  {
-    id: 207,
-    name: 'Peachy Glow Blush',
-    price: 850,
-    rating: 4,
-    reviews: 320,
-    image: imgHighlighter,
-    category: 'makeup',
-    subCategory: 'Blush',
-    description: 'Natural flush of color.'
-  },
-  {
-    id: 208,
-    name: 'Divine Shine Highlighter',
-    price: 1250,
-    rating: 5,
-    reviews: 670,
-    image: imgHighlighter,
-    category: 'makeup',
-    subCategory: 'Highlighter',
-    description: 'Liquid starlight for high points.',
-    label: 'New'
-  },
-
-  // --- BATH & BODY ---
-  {
-    id: 251,
-    name: 'Lavender Body Wash',
-    price: 450,
-    rating: 5,
-    reviews: 210,
-    image: imgTirtirPink,
-    category: 'bath & body',
-    subCategory: 'Body Wash',
-    description: 'Calming floral escape.'
-  },
-
-  // --- ORGANIC WELLNESS ---
-  {
-    id: 301,
-    name: 'Ashwagandha Drops',
-    price: 1250,
-    rating: 5,
-    reviews: 89,
-    image: imgVerymiss,
-    category: 'organic wellness',
-    subCategory: 'Supplements',
-    description: 'Stress relief with pure roots.'
-  },
-
-  // --- BEAUTY KITS ---
-  {
-    id: 351,
-    name: 'Bridal Radiance Kit',
-    price: 4500,
-    oldPrice: 5500,
-    rating: 5,
-    reviews: 45,
-    discount: '18%',
-    image: imgRoseGold,
-    category: 'beauty kits',
-    subCategory: 'Bridal Kits',
-    description: 'Complete glow ritual for your big day.'
-  },
-
-  // --- FRAGRANCES ---
-  {
-    id: 401,
-    name: 'Oud Majesty Perfume',
-    price: 3450,
-    rating: 5,
-    reviews: 120,
-    image: imgLipGloss,
-    category: 'fragrances',
-    subCategory: 'Perfume',
-    description: 'Mystical woods in a royal bottle.'
-  },
-
-  // --- ESSENTIAL OILS ---
-  {
-    id: 451,
-    name: 'Tea Tree Pure Oil',
-    price: 650,
-    rating: 5,
-    reviews: 890,
-    image: imgTirtirConcealer,
-    category: 'essential oils',
-    subCategory: 'Pure Oils',
-    description: 'Organic purity for flawless skin.'
-  }
-];
 
 import { useSearchParams } from 'react-router-dom';
 
@@ -411,14 +103,14 @@ const Shop = () => {
     <div className="min-h-screen bg-[#FDFCFB] font-sans selection:bg-brand-pink selection:text-white pb-20">
       
       {/* Header - Compact Editorial */}
-      <header className="bg-gradient-to-b from-brand-pink/5 to-transparent pt-10 pb-6 text-center">
+      <header className="bg-gradient-to-b from-brand-pink/5 to-transparent pt-4 pb-2 text-center">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-brand-gold font-bold uppercase tracking-[0.4em] text-[8px] md:text-[9px] mb-2 block">Premium Discovery</span>
-            <h1 className="text-3xl md:text-5xl font-serif font-black text-[#5C2E3E] leading-[0.9] tracking-tight">
+            <span className="text-brand-gold font-bold uppercase tracking-[0.4em] text-[7px] md:text-[8px] mb-1 block">Premium Discovery</span>
+            <h1 className="text-xl md:text-3xl font-serif font-black text-[#5C2E3E] leading-[0.9] tracking-tight">
               Soundarya <span className="text-brand-pink italic">Curation</span>
             </h1>
-            <div className="w-12 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            <div className="w-10 h-0.5 bg-brand-gold mx-auto mt-2 rounded-full"></div>
           </motion.div>
         </div>
       </header>
@@ -428,14 +120,14 @@ const Shop = () => {
         <div className="container mx-auto px-0 md:px-8">
           
           {/* Main Categories - Balanced scrolling */}
-          <div className="flex items-center lg:justify-center space-x-1.5 py-4 border-b border-gray-50 overflow-x-auto no-scrollbar px-4 lg:px-0">
+          <div className="flex items-center lg:justify-center space-x-1 py-2 border-b border-gray-50 overflow-x-auto no-scrollbar px-4 lg:px-0">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`relative whitespace-nowrap px-5 py-2 rounded-full text-[9px] md:text-[11px] font-bold tracking-[0.2em] transition-all uppercase ${
+                className={`relative whitespace-nowrap px-4 py-1.5 rounded-full text-[8px] md:text-[10px] font-bold tracking-[0.1em] transition-all uppercase ${
                   activeCategory === cat.id 
-                  ? 'bg-[#5C2E3E] text-white shadow-lg' 
+                  ? 'bg-[#5C2E3E] text-white shadow-md' 
                   : 'text-[#5C2E3E]/50 hover:text-brand-pink bg-brand-pink/5'
                 }`}
               >
@@ -484,8 +176,8 @@ const Shop = () => {
       </div>
 
       {/* FILTER & SORT SECTION */}
-      <div className="container mx-auto px-4 md:px-8 py-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-b border-gray-100">
+      <div className="container mx-auto px-4 md:px-8 py-2">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 py-2 border-b border-gray-100">
           
           <div className="flex items-center gap-3">
              <button 
@@ -609,7 +301,7 @@ const Shop = () => {
           </p>
         </div>
 
-        <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 border-t border-l border-gray-100 bg-gray-50/10">
+        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 bg-transparent border-none">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
               <motion.div key={product.id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

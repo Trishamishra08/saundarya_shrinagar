@@ -91,17 +91,11 @@ const Testimonials = () => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-2 relative z-10"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8 relative z-10"
         >
-          <span className="text-[#8B7355] font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs mb-1 block">
-            Love From Clients
-          </span>
-          <h2 className="text-2xl md:text-4xl font-serif font-bold text-brand-dark uppercase tracking-tight leading-none drop-shadow-sm">
-            BEAUTY <span className="text-brand-gold italic">STORIES</span>
-          </h2>
-          <div className="w-12 h-0.5 bg-brand-gold/60 mx-auto mt-3"></div>
+          <h2 className="text-xl md:text-2xl font-serif font-bold mb-1 text-brand-dark uppercase tracking-wide">Customer Stories</h2>
+          <div className="w-16 h-1 bg-brand-gold mx-auto"></div>
         </motion.div>
 
         <Swiper

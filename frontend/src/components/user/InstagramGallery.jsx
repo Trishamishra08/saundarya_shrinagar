@@ -23,20 +23,16 @@ const InstagramGallery = () => {
   return (
     <section className="py-6 border-t border-gray-100 bg-white">
       <div className="container mx-auto px-4 md:px-8">
-        <motion.a 
-          href={instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 30 }}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="block text-center mb-4 group"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-4 group"
         >
-          <FiInstagram size={36} className="mx-auto mb-2 text-brand-gold transition-transform group-hover:scale-110" />
-          <h2 className="text-xl md:text-2xl font-serif font-bold mb-1 text-brand-dark uppercase tracking-tight group-hover:text-brand-gold transition-colors">Follow Us on Instagram</h2>
-          <p className="text-brand-gold font-bold tracking-widest uppercase text-[9px]">@saundaryashringarpvtltd</p>
-        </motion.a>
+          <FiInstagram size={24} className="mx-auto mb-1 text-brand-gold transition-transform group-hover:scale-110" />
+          <h2 className="text-sm md:text-base font-serif font-black text-brand-dark uppercase tracking-widest group-hover:text-brand-gold transition-colors">Follow Our Journey</h2>
+          <div className="w-10 h-0.5 bg-brand-gold mx-auto"></div>
+        </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
           {images.map((img, index) => (
@@ -51,6 +47,7 @@ const InstagramGallery = () => {
               <img 
                 src={img} 
                 alt="Instagram Post"
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-brand-gold/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

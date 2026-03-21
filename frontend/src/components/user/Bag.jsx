@@ -1,0 +1,156 @@
+import React from 'react';
+import { useShop } from '../../context/ShopContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { FiShoppingBag, FiTrash2, FiMinus, FiPlus, FiArrowRight, FiInfo } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const Bag = () => {
+  const { cartItems, updateBagQuantity, removeFromCart, cartTotal } = useShop();
+  const navigate = useNavigate();
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="min-h-screen pt-24 pb-20 flex flex-col items-center justify-center bg-[#FDFCFB] px-4">
+        <div className="w-20 h-20 bg-brand-pink/10 rounded-full flex items-center justify-center text-brand-pink mb-6">
+          <FiShoppingBag size={40} />
+        </div>
+        <h2 className="text-2xl font-serif font-black text-brand-dark uppercase tracking-widest mb-2">Your Bag is Empty</h2>
+        <p className="text-gray-400 text-xs uppercase tracking-widest mb-8">Add something divine to your collection</p>
+        <Link 
+          to="/shop" 
+          className="bg-brand-dark text-white px-10 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-brand-pink transition-all"
+        >
+          Discover Shop
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#FDFCFB] pt-24 pb-20">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-serif font-black text-brand-dark uppercase tracking-tighter">
+              Your <span className="text-brand-pink italic">Shopping Bag</span>
+            </h1>
+            <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mt-1">
+              Curated Selection : {cartItems.length} Items
+            </p>
+          </div>
+          <Link to="/shop" className="text-[9px] font-black text-brand-pink uppercase border-b border-brand-pink hover:text-brand-dark hover:border-brand-dark transition-all hidden md:block">
+            Continue Shopping
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Cart Items List */}
+          <div className="lg:col-span-2 space-y-4">
+            <AnimatePresence>
+              {cartItems.map((item) => (
+                <motion.div 
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm flex gap-4 md:gap-6 group"
+                >
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                  </div>
+                  
+                  <div className="flex-1 flex flex-col justify-between py-1">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-sm font-serif font-black text-brand-dark uppercase">{item.name}</h3>
+                        <p className="text-[9px] text-brand-pink font-bold uppercase tracking-widest">{item.category}</p>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-gray-300 hover:text-red-500 transition-colors"
+                      >
+                        <FiTrash2 size={16} />
+                      </button>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center border border-gray-100 rounded-lg overflow-hidden h-8">
+                        <button 
+                          onClick={() => updateBagQuantity(item.id, -1)}
+                          className="px-2 hover:bg-gray-50 text-gray-400 transition-colors"
+                        >
+                          <FiMinus size={12} />
+                        </button>
+                        <span className="px-3 text-xs font-black text-brand-dark">{item.quantity}</span>
+                        <button 
+                          onClick={() => updateBagQuantity(item.id, 1)}
+                          className="px-2 hover:bg-gray-50 text-gray-400 transition-colors"
+                        >
+                          <FiPlus size={12} />
+                        </button>
+                      </div>
+                      <span className="text-sm font-black text-brand-dark">₹{item.price * item.quantity}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Order Summary */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl sticky top-28">
+              <h3 className="text-sm font-serif font-black text-brand-dark uppercase tracking-widest mb-6 pb-2 border-b border-gray-50">Order Summary</h3>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-[#5C2E3E]/60">
+                  <span>Bag Subtotal</span>
+                  <span>₹{cartTotal}</span>
+                </div>
+                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-[#5C2E3E]/60">
+                  <span>Shipping</span>
+                  <span className="text-green-600 font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-[#5C2E3E]/60">
+                  <span>Tax (Included)</span>
+                  <span>₹0</span>
+                </div>
+                <div className="h-[1px] bg-gray-50 my-2" />
+                <div className="flex justify-between text-base font-serif font-black text-brand-dark">
+                  <span>Total Amount</span>
+                  <span className="text-brand-pink">₹{cartTotal}</span>
+                </div>
+              </div>
+
+              <div className="bg-brand-pink/5 rounded-xl p-3 mb-6 flex gap-3">
+                <FiInfo className="text-brand-pink shrink-0" size={14} />
+                <p className="text-[9px] text-[#5C2E3E]/70 font-bold leading-relaxed uppercase">
+                  Shipping is complimentary for orders above ₹500. Quality checks ensured.
+                </p>
+              </div>
+
+              <button 
+                onClick={() => navigate('/checkout')}
+                className="w-full bg-brand-dark text-white py-4 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-xl hover:bg-brand-pink shadow-brand-pink/20 transition-all group"
+              >
+                Go to Checkout <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              
+              <div className="mt-6 flex flex-col items-center gap-2">
+                 <p className="text-[8px] text-gray-400 font-bold uppercase tracking-widest">Secure Payments via SSL</p>
+                 <div className="flex gap-2">
+                    <div className="w-6 h-4 bg-gray-100 rounded-sm" />
+                    <div className="w-6 h-4 bg-gray-100 rounded-sm" />
+                    <div className="w-6 h-4 bg-gray-100 rounded-sm" />
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Bag;

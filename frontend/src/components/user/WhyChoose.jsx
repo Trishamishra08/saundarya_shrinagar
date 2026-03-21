@@ -38,11 +38,10 @@ const WhyChoose = () => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-10"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8"
         >
-          <h2 className="text-xl md:text-3xl font-serif font-bold mb-2 text-brand-dark">Why Choose Soundarya Shrinagar?</h2>
+          <h2 className="text-xl md:text-2xl font-serif font-bold mb-1 text-brand-dark uppercase tracking-wide">Why Choose Soundarya Shrinagar?</h2>
           <div className="w-16 h-1 bg-brand-gold mx-auto"></div>
         </motion.div>
 

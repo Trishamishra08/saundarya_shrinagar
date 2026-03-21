@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroCarousel from './HeroCarousel';
 import Categories from './Categories';
+import TrendingOffers from './TrendingOffers';
 import TrendingBanner from './TrendingBanner';
 import FeaturedProducts from './FeaturedProducts';
 import OffersBanner from './OffersBanner';
@@ -15,7 +16,7 @@ const Home = () => {
     <>
       <HeroCarousel />
       <Categories />
-      <TrendingBanner />
+      <TrendingOffers />
       <FeaturedProducts />
       <OffersBanner />
       <BestSellers />
