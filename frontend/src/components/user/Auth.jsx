@@ -219,13 +219,13 @@ const Auth = () => {
                    type="submit"
                    className={`w-full bg-white text-[#5C2E3E] py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl hover:bg-white/90 active:scale-95 transition-all mt-4`}
                  >
-                   {step === 1 ? 'Gather Access' : 'Radiate Open'}
+                   {step === 1 ? 'Send OTP' : 'Verify OTP'}
                  </button>
                </form>
 
                <div className="mt-8 pt-8 border-t border-white/5 text-center">
                  <p className="text-[8px] text-white/30 font-black uppercase tracking-widest flex items-center justify-center gap-2">
-                    Soundarya Shrinagar Ritual System
+                    Soundarya Secure Verified Access
                  </p>
                </div>
             </motion.div>
