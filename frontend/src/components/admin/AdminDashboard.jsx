@@ -71,22 +71,22 @@ const AdminDashboard = () => {
         <h1 className="text-xl md:text-2xl font-serif font-black text-brand-dark uppercase tracking-widest leading-none mb-1">
           Store Overview
         </h1>
-        <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.2em] opacity-70">
+        <p className="text-gray-600 text-[9px] font-black uppercase tracking-[0.2em] opacity-70">
           Platform Analytics & Quick Controls
         </p>
       </div>
 
       {/* Quick Management Section */}
       <div className="space-y-3">
-        <h3 className="text-[9px] font-bold text-gray-400 uppercase tracking-widest px-1">QUICK MANAGEMENT</h3>
+        <h3 className="text-[9px] font-bold text-gray-600 uppercase tracking-widest px-1">QUICK MANAGEMENT</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            { title: 'ADD PRODUCT', icon: <FiPlus />, color: 'bg-[#F1FDF8]', iconColor: 'text-[#50C878]', link: '/admin/products?add=true' },
-            { title: 'CREATE COUPON', icon: <FiTag />, color: 'bg-[#FFF5F8]', iconColor: 'text-[#FF69B4]', link: '/admin/categories' },
-            { title: 'PENDING ORDERS', icon: <FiClock />, color: 'bg-[#FFFBF2]', iconColor: 'text-[#FFB347]', link: '/admin/orders' },
-            { title: 'CHECK RETURNS', icon: <FiRotateCcw />, color: 'bg-[#FEF5F5]', iconColor: 'text-[#FF5C5C]', link: '/admin/orders' },
-            { title: 'STOCK ALERTS', icon: <FiAlertTriangle />, color: 'bg-[#FEF7F5]', iconColor: 'text-[#FF8C69]', link: '/admin/products' },
-            { title: 'MANAGE SELLERS', icon: <FiHome />, color: 'bg-[#F2F9FF]', iconColor: 'text-[#4A90E2]', link: '/admin/users' },
+            { title: 'ADD PRODUCT', icon: <FiPlus />, color: 'bg-[#D1F2E1]', iconColor: 'text-[#50C878]', link: '/admin/products?add=true' },
+            { title: 'CREATE COUPON', icon: <FiTag />, color: 'bg-[#FEE2EC]', iconColor: 'text-[#FF69B4]', link: '/admin/categories' },
+            { title: 'PENDING ORDERS', icon: <FiClock />, color: 'bg-[#FEF0D5]', iconColor: 'text-[#FFB347]', link: '/admin/orders' },
+            { title: 'CHECK RETURNS', icon: <FiRotateCcw />, color: 'bg-[#FEE2E2]', iconColor: 'text-[#FF5C5C]', link: '/admin/orders' },
+            { title: 'STOCK ALERTS', icon: <FiAlertTriangle />, color: 'bg-[#FEE7DC]', iconColor: 'text-[#FF8C69]', link: '/admin/products' },
+            { title: 'MANAGE SELLERS', icon: <FiHome />, color: 'bg-[#E1F0FF]', iconColor: 'text-[#4A90E2]', link: '/admin/users' },
           ].map((item, i) => (
             <Link to={item.link} key={i}>
               <motion.div 
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
                 <div className={`p-1 rounded-lg ${item.iconColor}`}>
                   {React.cloneElement(item.icon, { size: 16 })}
                 </div>
-                <span className="text-[8px] font-black text-gray-700 uppercase tracking-wider text-center px-1 leading-tight">
+                <span className="text-[8px] font-black text-gray-800 uppercase tracking-wider text-center px-1 leading-tight">
                   {item.title}
                 </span>
               </motion.div>
@@ -108,11 +108,11 @@ const AdminDashboard = () => {
       {/* Summary Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         {[
-          { title: 'TOTAL USERS', value: '0', icon: <FiUsers />, iconBg: 'bg-[#E3F2FD]', iconColor: 'text-[#1976D2]', link: '/admin/users' },
-          { title: 'TOTAL REVENUE', value: '₹0', icon: <HiCurrencyRupee />, iconBg: 'bg-[#E8F5E9]', iconColor: 'text-[#43A047]', link: '/admin/finance' },
-          { title: 'TOTAL SELLERS', value: '0', icon: <FiHome />, iconBg: 'bg-[#F3E5F5]', iconColor: 'text-[#9C27B0]', link: '/admin/users' },
-          { title: 'TOTAL ORDERS', value: '0', icon: <FiShoppingBag />, iconBg: 'bg-[#E1F5FE]', iconColor: 'text-[#039BE5]', link: '/admin/orders' },
-          { title: 'PENDING ORDERS', value: '0', icon: <FiClock />, iconBg: 'bg-[#FFF3E0]', iconColor: 'text-[#FB8C00]', link: '/admin/orders' }
+          { title: 'TOTAL USERS', value: '0', icon: <FiUsers />, iconBg: 'bg-[#D1E9FF]', iconColor: 'text-[#1976D2]', link: '/admin/users' },
+          { title: 'TOTAL REVENUE', value: '₹0', icon: <HiCurrencyRupee />, iconBg: 'bg-[#D7F2D9]', iconColor: 'text-[#43A047]', link: '/admin/finance' },
+          { title: 'TOTAL SELLERS', value: '0', icon: <FiHome />, iconBg: 'bg-[#EBD1F2]', iconColor: 'text-[#9C27B0]', link: '/admin/users' },
+          { title: 'TOTAL ORDERS', value: '0', icon: <FiShoppingBag />, iconBg: 'bg-[#D1F0FF]', iconColor: 'text-[#039BE5]', link: '/admin/orders' },
+          { title: 'PENDING ORDERS', value: '0', icon: <FiClock />, iconBg: 'bg-[#FEE7C8]', iconColor: 'text-[#FB8C00]', link: '/admin/orders' }
         ].map((stat, i) => (
           <Link to={stat.link} key={i}>
             <motion.div 
@@ -120,7 +120,7 @@ const AdminDashboard = () => {
               className="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between cursor-pointer"
             >
               <div className="flex flex-col">
-                <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">{stat.title}</span>
+                <span className="text-[8px] font-bold text-gray-500 uppercase tracking-widest leading-none mb-1">{stat.title}</span>
                 <span className="text-xl font-bold text-gray-800">{stat.value}</span>
               </div>
               <div className={`w-10 h-10 ${stat.iconBg} ${stat.iconColor} rounded-lg flex items-center justify-center shadow-inner`}>
@@ -138,11 +138,11 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-gray-800">Revenue Analytics</h3>
-              <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Growth vs Last Month: +24%</p>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Growth vs Last Month: +24%</p>
             </div>
             <div className="flex items-center gap-2">
                <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-               <span className="text-[9px] font-bold text-gray-500 uppercase">Weekly</span>
+               <span className="text-[9px] font-bold text-gray-600 uppercase">Weekly</span>
             </div>
           </div>
           <div className="h-44 w-full relative">
@@ -170,7 +170,7 @@ const AdminDashboard = () => {
                 { x: 300, l: 'Thu' }, { x: 400, l: 'Fri' }, { x: 500, l: 'Sat' }, 
                 { x: 600, l: 'Sun' }, { x: 700, l: 'Next' }
               ].map((p, i) => (
-                <text key={i} x={p.x} y="180" textAnchor="middle" className="text-[10px] fill-gray-400 font-bold uppercase">{p.l}</text>
+                <text key={i} x={p.x} y="180" textAnchor="middle" className="text-[10px] fill-gray-500 font-bold uppercase">{p.l}</text>
               ))}
             </svg>
           </div>
@@ -187,7 +187,7 @@ const AdminDashboard = () => {
               { name: 'COMBOS', value: '30%', color: 'bg-amber-400' }
             ].map(cat => (
               <div key={cat.name} className="space-y-1.5">
-                <div className="flex justify-between text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+                <div className="flex justify-between text-[9px] font-bold text-gray-600 uppercase tracking-widest">
                   <span>{cat.name}</span>
                   <span>{cat.value}</span>
                 </div>
@@ -212,10 +212,10 @@ const AdminDashboard = () => {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-gray-50/50">
-                  <th className="px-5 py-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest">Customer</th>
-                  <th className="px-5 py-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest">Order ID</th>
-                  <th className="px-5 py-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest">Amount</th>
-                  <th className="px-5 py-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest text-right">Status</th>
+                  <th className="px-5 py-3 text-[9px] font-bold text-gray-500 uppercase tracking-widest">Customer</th>
+                  <th className="px-5 py-3 text-[9px] font-bold text-gray-500 uppercase tracking-widest">Order ID</th>
+                  <th className="px-5 py-3 text-[9px] font-bold text-gray-500 uppercase tracking-widest">Amount</th>
+                  <th className="px-5 py-3 text-[9px] font-bold text-gray-500 uppercase tracking-widest text-right">Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -230,7 +230,7 @@ const AdminDashboard = () => {
                        <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center text-[10px] font-bold text-gray-500">{row.name[0]}</div>
                        <span className="text-xs font-bold text-gray-700">{row.name}</span>
                     </td>
-                    <td className="px-5 py-3.5 text-xs font-bold text-gray-400 uppercase tracking-tighter">{row.id}</td>
+                    <td className="px-5 py-3.5 text-xs font-bold text-gray-500 uppercase tracking-tighter">{row.id}</td>
                     <td className="px-5 py-3.5 text-xs font-bold text-gray-700">{row.amount}</td>
                     <td className="px-5 py-3.5 text-right">
                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[8px] font-bold uppercase ${
