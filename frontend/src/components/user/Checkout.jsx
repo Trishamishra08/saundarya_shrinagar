@@ -90,18 +90,7 @@ const Checkout = () => {
                 <p className="text-[8px] text-[#5C2E3E]/60 font-serif italic line-clamp-1">{formData.address}</p>
              </div>
 
-             {/* Delivery Map Feature */}
-             <div className="relative h-24 bg-gray-100 overflow-hidden group">
-                <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=20.5937,78.9629&zoom=4&size=400x400&sensor=false')] bg-cover opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="p-2 bg-white/90 backdrop-blur-sm border border-brand-pink/20 text-[6px] font-black uppercase tracking-widest text-[#5C2E3E]">Courier Dispatch Map</div>
-                   <motion.div 
-                     animate={{ scale: [1, 1.2, 1] }} 
-                     transition={{ duration: 2, repeat: Infinity }}
-                     className="absolute w-4 h-4 bg-brand-pink rounded-full opacity-20 shadow-2xl"
-                   />
-                </div>
-             </div>
+
              
              <Link to={`/track-order?id=${orderId}`} className="w-full inline-block px-8 py-3 bg-brand-gold text-white text-[9px] font-black uppercase tracking-[0.2em] shadow-lg hover:bg-[#5C2E3E] transition-all mb-2">
                 Track Journey
