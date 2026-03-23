@@ -28,8 +28,8 @@ export const ShopProvider = ({ children }) => {
   // Load from localStorage on mount
   useEffect(() => {
     try {
-      const savedCart = localStorage.getItem('soundarya_cart');
-      const savedWishlist = localStorage.getItem('soundarya_wishlist');
+      const savedCart = localStorage.getItem('saundarya_cart');
+      const savedWishlist = localStorage.getItem('saundarya_wishlist');
       if (savedCart && savedCart !== "undefined") setCart(JSON.parse(savedCart));
       if (savedWishlist && savedWishlist !== "undefined") setWishlist(JSON.parse(savedWishlist));
     } catch (e) {
@@ -41,11 +41,11 @@ export const ShopProvider = ({ children }) => {
 
   // Save to localStorage on change
   useEffect(() => {
-    localStorage.setItem('soundarya_cart', JSON.stringify(cart));
+    localStorage.setItem('saundarya_cart', JSON.stringify(cart));
   }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem('soundarya_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('saundarya_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const addToCart = (product) => {

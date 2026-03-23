@@ -102,7 +102,7 @@ const Contact = () => {
               <ContactInfo 
                 icon={<FiInstagram size={16} />} 
                 label="Follow our journey" 
-                value="@soundarya_shrinagar" 
+                value="@saundarya_shrinagar" 
               />
               <ContactInfo 
                 icon={<FiMapPin size={16} />} 
@@ -155,7 +155,7 @@ const Contact = () => {
             <SocialIcon icon={<FiTwitter />} href="#" />
           </div>
           <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">
-            Stay Inspired &bull; Soundarya Shrinagar
+            Stay Inspired &bull; Saundarya Shrinagar
           </p>
         </div>
       </footer>

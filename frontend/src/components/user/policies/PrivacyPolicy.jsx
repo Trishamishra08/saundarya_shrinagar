@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-lg font-bold uppercase tracking-widest">Information We Collect</h2>
           </div>
           <p className="text-gray-600 text-xs leading-relaxed">
-            We collect personal information that you provide to us directly, such as your name, email address, phone number, and shipping address when you make a purchase or create an account at Soundarya Shrinagar.
+            We collect personal information that you provide to us directly, such as your name, email address, phone number, and shipping address when you make a purchase or create an account at Saundarya Shrinagar.
           </p>
         </section>
 
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
 
         <div className="pt-8 border-t border-brand-pink/5 text-center">
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                © 2024 Soundarya Shringar Pvt Ltd. All Rights Reserved.
+                © 2024 Saundarya Shringar Pvt Ltd. All Rights Reserved.
             </p>
         </div>
       </div>

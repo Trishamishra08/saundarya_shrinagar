@@ -41,7 +41,7 @@ const CancelPolicy = () => {
               <span className="w-4 h-[2px] bg-brand-gold"></span> 4. Store's Rights
             </h2>
             <p className="pl-6">
-              Under rare circumstances, Soundarya Shringar reserves the right to cancel an order due to stock unavailability, pricing errors, or suspicion of fraudulent activity. You will be notified via email or phone if such a situation arises.
+              Under rare circumstances, Saundarya Shringar reserves the right to cancel an order due to stock unavailability, pricing errors, or suspicion of fraudulent activity. You will be notified via email or phone if such a situation arises.
             </p>
           </section>
 

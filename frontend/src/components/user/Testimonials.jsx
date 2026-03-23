@@ -52,7 +52,7 @@ const testimonials = [
     id: 5,
     name: 'Priya Sharma',
     age: 26,
-    text: "Soundarya Shrinagar's products have transformed my skincare routine. The quality is unmatched and the results are visible within days. Truly a premium experience!",
+    text: "Saundarya Shrinagar's products have transformed my skincare routine. The quality is unmatched and the results are visible within days. Truly a premium experience!",
     image: '/testi_5.png',
     rotate: '-rotate-8'
   },

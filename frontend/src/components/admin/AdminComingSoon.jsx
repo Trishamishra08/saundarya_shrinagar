@@ -17,7 +17,7 @@ const AdminComingSoon = ({ title, icon }) => {
           <span className="w-10 h-[1px] bg-brand-pink/20" /> Under Development <span className="w-10 h-[1px] bg-brand-pink/20" />
       </p>
       <button className="bg-brand-dark text-white px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl shadow-brand-dark/20 hover:scale-105 transition-all">
-        Coming Soon to Soundarya
+        Coming Soon to Saundarya
       </button>
     </div>
   );

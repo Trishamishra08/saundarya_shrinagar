@@ -274,7 +274,7 @@ const Auth = () => {
 
                <div className="mt-8 pt-8 border-t border-white/5 text-center">
                  <p className="text-[8px] text-white/30 font-black uppercase tracking-widest flex items-center justify-center gap-2">
-                    Soundarya Secure Verified Access
+                    Saundarya Secure Verified Access
                  </p>
                </div>
             </motion.div>
@@ -297,7 +297,7 @@ const Auth = () => {
       >
         {/* Header / Logo */}
         <div className="flex items-center gap-3 mb-6 md:mb-8 md:px-6">
-          <img src="/logo.png" alt="Soundarya Shrinagar Logo" className="h-4 md:h-10 w-auto logo-blend" />
+          <img src="/logo.png" alt="Saundarya Shrinagar Logo" className="h-4 md:h-10 w-auto logo-blend" />
           <div className="flex flex-col leading-none">
              <h2 className="text-[10px] md:text-lg font-black text-[#5C2E3E] uppercase tracking-[0.12em]" style={{ fontFamily: "'Cinzel Decorative', serif" }}>
                Saundarya
@@ -431,7 +431,7 @@ const Auth = () => {
           
           <div className="mt-6 md:mt-10 text-center">
              <p className="text-[5px] md:text-[6.5px] text-white/30 font-black uppercase tracking-[0.2em] flex items-center justify-center gap-1.5 md:gap-2">
-                &copy; Soundarya Module <span className="w-0.5 h-0.5 md:w-1 md:h-1 bg-white/20 rounded-full" /> Authorized Access
+                &copy; Saundarya Module <span className="w-0.5 h-0.5 md:w-1 md:h-1 bg-white/20 rounded-full" /> Authorized Access
              </p>
           </div>
         </div>

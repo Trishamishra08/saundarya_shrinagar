@@ -251,8 +251,8 @@ const ProductDetail = () => {
                        <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">Secure transaction</p>
                     </div>
                     <div className="pl-9 space-y-1">
-                       <p className="text-[10px] text-gray-400">Ships from <span className="text-gray-900 font-bold ml-2">Soundarya</span></p>
-                       <p className="text-[10px] text-gray-400">Sold by <span className="text-gray-900 font-bold ml-2">Soundarya Official</span></p>
+                       <p className="text-[10px] text-gray-400">Ships from <span className="text-gray-900 font-bold ml-2">Saundarya</span></p>
+                       <p className="text-[10px] text-gray-400">Sold by <span className="text-gray-900 font-bold ml-2">Saundarya Official</span></p>
                     </div>
                  </div>
               </div>

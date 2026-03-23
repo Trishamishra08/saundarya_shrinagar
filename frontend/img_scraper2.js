@@ -57,7 +57,7 @@ function searchImage(query) {
 }
 
 (async () => {
-  const dir = 'c:/Users/trish/Desktop/soundarya_shrinagar/src/assets/products';
+  const dir = 'c:/Users/trish/Desktop/saundarya_shrinagar/src/assets/products';
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
   for (const p of products) {

@@ -143,7 +143,7 @@ const BlogSection = () => {
             viewport={{ once: true }}
             className="text-brand-pink font-bold uppercase tracking-[0.6em] text-[8px] md:text-[11px] block mb-1 md:mb-2"
           >
-            SOUNDARYA SHRINAGAR
+            SAUNDARYA SHRINAGAR
           </motion.span>
 
           {/* TOP IMAGES */}

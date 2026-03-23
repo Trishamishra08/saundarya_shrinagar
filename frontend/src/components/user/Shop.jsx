@@ -111,7 +111,7 @@ const Shop = () => {
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-brand-gold font-bold uppercase tracking-[0.4em] text-[7px] md:text-[8px] mb-1 block">Premium Discovery</span>
             <h1 className="text-xl md:text-3xl font-serif font-black text-[#5C2E3E] leading-[0.9] tracking-tight">
-              Soundarya <span className="text-brand-pink italic">Curation</span>
+              Saundarya <span className="text-brand-pink italic">Curation</span>
             </h1>
             <div className="w-10 h-0.5 bg-brand-gold mx-auto mt-2 rounded-full"></div>
           </motion.div>

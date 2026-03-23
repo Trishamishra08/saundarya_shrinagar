@@ -33,7 +33,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center gap-3 shrink-0 cursor-pointer group">
               <img
                 src="/logo.png"
-                alt="Soundarya Shrinagar Logo"
+                alt="Saundarya Shrinagar Logo"
                 className="h-10 w-auto md:h-14 logo-blend transition-transform group-hover:scale-105"
               />
 
@@ -147,7 +147,7 @@ const Navbar = () => {
                   className="text-2xl text-white uppercase tracking-widest leading-none"
                   style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: 900 }}
                 >
-                  Soundarya
+                  Saundarya
                 </h2>
                 <span
                   className="text-[9px] text-white/80 tracking-[0.45em] uppercase mt-1.5 block font-bold"
