@@ -8,7 +8,7 @@ const Checkout = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, cartCount, clearCart, orderId } = useShop();
   const [step, setStep] = useState(1); // 1: Cart, 2: Details, 3: Payment
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedPayment, setSelectedPayment] = useState('upi');
+  const [selectedPayment, setSelectedPayment] = useState('paynow');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -254,8 +254,7 @@ const Checkout = () => {
                    </h1>
                    <div className="space-y-3">
                       {[
-                        { id: 'upi', label: 'UPI Transaction', desc: 'Secure phone-to-phone transfer' },
-                        { id: 'card', label: 'Card Payment', desc: 'Visa, Mastercard, Amex' }
+                        { id: 'paynow', label: 'PAY NOW', desc: 'Secure Online Transaction (UPI, Cards, NetBanking)' }
                       ].map(method => (
                         <div 
                           key={method.id} 
